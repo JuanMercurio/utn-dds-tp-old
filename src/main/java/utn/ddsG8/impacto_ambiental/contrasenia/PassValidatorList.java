@@ -1,6 +1,5 @@
-package contrasenia;
+package utn.ddsG8.impacto_ambiental.contrasenia;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -10,6 +9,7 @@ public class PassValidatorList extends PassValidator {
         super(archivoContrasenias, cantMinCaracteres, cantMinLower, cantMinNum, cantMinUpper);
     }
 
+    @Override
     public boolean cumpleRestricciones(String pass){
         List<String> passList = Arrays.asList((pass.split("")));
         int uppers  = (int) passList.stream().filter((String s) -> Character.isUpperCase(s.charAt(0))).count();

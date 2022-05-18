@@ -8,11 +8,13 @@
     <artifactId>tp-dds-g8</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Java 8 -->
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <!-- Junit5-->
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -21,5 +23,21 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <!-- Necesario para correr en consola (mvn test) -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M6</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

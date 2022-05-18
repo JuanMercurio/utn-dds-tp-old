@@ -1,11 +1,13 @@
-package contrasenia;
+package utn.ddsG8.impacto_ambiental.contrasenia;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public abstract class PassValidator{
-
     protected Integer cantMinCaracteres;
     protected Integer cantMinUpper;
     protected Integer cantMinLower;
@@ -13,15 +15,14 @@ public abstract class PassValidator{
     protected List<String> malasContrasenias;
 
     public PassValidator(String archivoContrasenias, Integer cantMinCaracteres,
-                             Integer cantMinLower, Integer cantMinNum, Integer cantMinUpper)
-            throws FileNotFoundException {
+                         Integer cantMinLower, Integer cantMinNum, Integer cantMinUpper)
+                         throws FileNotFoundException {
 
         crearListaPasswords(archivoContrasenias);
-        this.malasContrasenias = malasContrasenias;
         this.cantMinCaracteres = cantMinCaracteres;
-        this.cantMinLower      = cantMinLower;
-        this.cantMinNum        = cantMinNum;
-        this.cantMinUpper      = cantMinUpper;
+        this.cantMinLower = cantMinLower;
+        this.cantMinNum = cantMinNum;
+        this.cantMinUpper = cantMinUpper;
     }
 
     private void crearListaPasswords(String path) throws FileNotFoundException {
@@ -37,7 +38,7 @@ public abstract class PassValidator{
 
         myReader.close();
 
-        Collections.sort(this.malasContrasenias);
+        this.malasContrasenias.sort((s1, s2) -> s1.compareTo(s2));
     }
 
     public boolean validarPass(String pass){
