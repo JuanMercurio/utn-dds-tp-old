@@ -41,7 +41,7 @@ public interface DistanciaAPI {
 
     @GET("api/distancia")
     Call<Distancia> distancia(@Header("authorization") String token,
-                              @Query("localidadorigenId") int localidadOrigenId,
+                              @Query("localidadOrigenId") int localidadOrigenId,
                               @Query("calleOrigen") String calleOrigen,
                               @Query("alturaOrigen") String alturaOrigen,
                               @Query("localidadDestinoId") int localidadDestinoId,

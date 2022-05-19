@@ -7,14 +7,14 @@ import utn.ddsG8.impacto_ambiental.services.distancia.*;
 import java.io.IOException;
 import java.util.List;
 
-public class distanciaTest {
-    private String token = "Bearer E8iN6xBPXQsUI+M72MfPdVhM/o3axkzywqKZjjOyhe0=";
+public class DistanciaTest {
+    private final String token = "Bearer E8iN6xBPXQsUI+M72MfPdVhM/o3axkzywqKZjjOyhe0=";
 
     @Test
-    public void uruarioYaExiste() throws IOException {
+    public void usuarioYaExiste() throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
         UserRespuesta respuesta = api.crearUsuario(new UserCrear("mail@ejemplo.com"));
-        Assertions.assertEquals(null, respuesta);
+        Assertions.assertNull(respuesta);
     }
 
     @Test
@@ -64,5 +64,20 @@ public class distanciaTest {
         DistanciaServicio api = DistanciaServicio.getInstancia();
         List<Localidad> localidades = api.localidades(token, 1, 9);
         Assertions.assertEquals("ALDEA BRASILERA ", localidades.get(0).nombre);
+    }
+
+    @Test
+    public void retornaUnaDistancia() throws IOException {
+        DistanciaServicio api = DistanciaServicio.getInstancia();
+        Distancia distancia = api.distancia(token,
+                1,
+                "maipu",
+                "100",
+                457,
+                "O'Higgins",
+                "200");
+        Assertions.assertTrue(distancia.valor > 0);
+        Assertions.assertEquals("KM", distancia.unidad);
+
     }
 }

@@ -1,6 +1,6 @@
 package utn.ddsG8.impacto_ambiental.services.distancia;
 
 public class Distancia {
-    public int valor;
+    public float valor;
     public String unidad;
 }
