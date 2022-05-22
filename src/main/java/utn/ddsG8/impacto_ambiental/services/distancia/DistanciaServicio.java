@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DistanciaServicio {
     private static DistanciaServicio instancia = null;
-    private static final String URL= "https://ddstpa.com.ar/"; //agregar para obtener de archivo de config
+    private static final String URL= "https://ddstpa.com.ar/"; //agregar para obtener de archivo de config y set desde el instanciador
     private final Retrofit retrofit;
 
     private DistanciaServicio() {
@@ -33,6 +33,7 @@ public class DistanciaServicio {
         Response<List<Pais>> responsePaises = requestPaises.execute();
         return responsePaises.body();
     }
+
 
     public List<Provincia> provincias(String token, int offset) throws IOException {
         DistanciaAPI distanciaAPI = this.retrofit.create(DistanciaAPI.class);
@@ -92,9 +93,6 @@ public class DistanciaServicio {
         Call<Distancia> requestDistancia = distanciaAPI.distancia(token, localidadOrigenId, calleOrigen, alturaOrigen,
                                                                   localidadDestinoId, calleDestino, alturaDestino);
         Response<Distancia> responseDistancia = requestDistancia.execute();
-        if (responseDistancia.code() != 200) {
-            System.out.println(responseDistancia.code() + responseDistancia.message());
-        }
         return responseDistancia.body();
     }
 
