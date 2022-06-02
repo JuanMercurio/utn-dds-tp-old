@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import utn.ddsG8.impacto_ambiental.estructura.Direccion;
 
 import java.io.IOException;
 import java.util.List;
@@ -79,6 +80,16 @@ public class DistanciaServicio {
         return responseMunicipio.body();
     }
 
+    public Distancia distancia(String token, Direccion inicio, Direccion fin) throws IOException {
+        return distancia(token, inicio.getLocalidad().getId(),
+                                inicio.getCalle(),
+                                inicio.getAltura(),
+                                fin.getLocalidad().getId(),
+                                fin.getCalle(),
+                                fin.getAltura()
+                                );
+
+    }
 
     public Distancia distancia(String token,
                                int localidadOrigenId,
