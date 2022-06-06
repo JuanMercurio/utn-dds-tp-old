@@ -1,4 +1,4 @@
-package utn.ddsG8.distancia;
+package utn.ddsG8.services.distancia;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

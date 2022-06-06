@@ -12,7 +12,7 @@ public class Trayecto {
     private List<Tramo> tramos;
 
     public Trayecto() {
-        this.viajeros = new ArrayList<Miembro>() ;
+        this.miembros = new ArrayList<Miembro>() ;
         this.organizaciones = new ArrayList<Organizacion>() ;
         this.tramos = new ArrayList<Tramo>() ;
     }

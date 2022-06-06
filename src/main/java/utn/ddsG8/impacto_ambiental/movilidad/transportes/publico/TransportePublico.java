@@ -11,15 +11,8 @@ public abstract class TransportePublico implements Transporte {
     protected Parada paradaFin;
 
     @Override
-    public void crearTramo(Direccion inicio, Direccion fin) {
-//        inicio = paradaInicio.getDireccion();
-//        fin = paradaInicio.getDireccion();
-//        Tramo tramo = new Tramo(inicio, fin , this);
-    }
-
-    @Override
     public Distancia distancia(String token) throws IOException {
-        int valor = paradaInicio.distancia(paradaFin);
+        int valor = paradaInicio.distanciaAParada(paradaFin);
         //todo: unidades son necesarias?
         String unidad = "m";
         return new Distancia(valor, unidad);

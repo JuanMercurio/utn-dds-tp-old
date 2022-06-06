@@ -12,11 +12,6 @@ public abstract class VehiculoParticular implements Transporte {
     private Direccion fin;
 
     @Override
-    public void crearTramo(Direccion inicio, Direccion fin) {
-        Tramo tramo = new Tramo(inicio, fin, this);
-    }
-
-    @Override
     public Distancia distancia(String token) throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
         return api.distancia(token, inicio, fin);

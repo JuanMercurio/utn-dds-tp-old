@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+// TODO
+// Por ahora todas las celdas del archivo de excel tiene que tener formato texto, si no esto rompe.
+// Confirmar con los profesores en que formatos se utilizaran las celdas
 public class LectorExcel {
 
     public List<Medicion> obtenerDatosActividades(String path) throws IOException {
@@ -23,16 +27,21 @@ public class LectorExcel {
         XSSFSheet sheet = workbook.getSheetAt(0);
 
         Iterator<Row> rowIterator = sheet.iterator();
-        while (rowIterator.hasNext()) {
-            Row row = rowIterator.next();
+        rowIterator.next();
+        rowIterator.next();
 
+        while (rowIterator.hasNext()) {
+
+            Row row = rowIterator.next();
             Iterator<Cell> cellIterator = row.cellIterator();
             Medicion medicion = new Medicion();
-            while (cellIterator.hasNext()) {
-                Cell cell = cellIterator.next();
+            medicion.setActividad(cellIterator.next().getStringCellValue());
+            medicion.setTipoConsumo(cellIterator.next().getStringCellValue());
+            medicion.setValor(cellIterator.next().getStringCellValue());
+            medicion.setPeriocidad(cellIterator.next().getStringCellValue());
+            medicion.setPeriodoDeImputacion(cellIterator.next().getStringCellValue());
 
-            }
-
+            mediciones.add(medicion);
         }
             file.close();
 

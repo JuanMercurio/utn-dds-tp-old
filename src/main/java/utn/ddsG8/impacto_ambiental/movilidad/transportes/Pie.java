@@ -4,10 +4,7 @@ import utn.ddsG8.impacto_ambiental.estructura.Direccion;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
 public class Pie implements Transporte {
-    @Override
-    public void crearTramo(Direccion inicio, Direccion fin) {
 
-    }
 
     @Override
     public void calcularHC() {

@@ -28,18 +28,31 @@ public class Miembro {
         this.sectores.add(sector);
     }
 
-    public void crearTrayecto(Tramo ... tramos) {
+    public void crearTramo(Transporte transporte) {
+        Tramo t = new Tramo(transporte);
+    }
+
+    public int crearTrayecto(Tramo ... tramos) {
         Trayecto trayecto = new Trayecto();
         trayecto.agregarMiembro(this);
         for (Tramo tramo:tramos) {
             trayecto.agregarTramo(tramo);
         }
         //TODO: agregar las organizaciones que forman parte
+
+        // TODO: deberia retornar el id del trayecto
+        return 0;
+    }
+
+    public void solicitudUnionOrganizacion(Organizacion org) {
+        //TODO: deberia pasarle el sector tambien?
+        org.solicitudNuevoMiembro(this);
     }
 
     //TODO: segun un id de trayecto se suma el miembro al viaje
     public void sumarseATrayecto(int idTrayecto) {
-
     }
+
+
 
 }
