@@ -9,6 +9,7 @@ public class Parada {
     private Direccion direccion;
     private String nombre;
     private Linea linea;
+    private double distanciaProximaParada;
 
     public Parada(String nombre, Linea linea, Parada proxima, Parada anterior) {
         this.nombre = nombre;
@@ -24,7 +25,8 @@ public class Parada {
     }
 
     public int distanciaProximaParada() {
-        // TODO: agregar distancia a la proxima parada como un atributo? Cuado se crea
+
+        // todo llamar a la API
        return 0;
     }
 

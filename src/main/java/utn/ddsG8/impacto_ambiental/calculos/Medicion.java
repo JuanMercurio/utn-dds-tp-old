@@ -9,6 +9,7 @@ public class Medicion {
     private String periocidad;
     private String periodoDeImputacion;
 
+
     public String getActividad() {
         return actividad;
     }

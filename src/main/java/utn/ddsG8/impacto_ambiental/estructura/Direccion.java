@@ -7,8 +7,12 @@ public class Direccion {
     private String nombre;
     private String calle;
     private Integer altura;
+
+    //todo va la provincia o no?
     private Provincia provincia;
+    //todo va la Municipalidad o no?
     private Municipio municipio;
+
     private Localidad localidad;
 
     public Localidad getLocalidad() {
