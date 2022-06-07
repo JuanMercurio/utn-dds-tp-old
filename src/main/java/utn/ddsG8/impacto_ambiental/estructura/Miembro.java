@@ -28,8 +28,9 @@ public class Miembro {
         this.sectores.add(sector);
     }
 
-    public void crearTramo(Transporte transporte) {
-        Tramo t = new Tramo(transporte);
+    public Tramo crearTramo(Transporte transporte) {
+        Tramo tramo = new Tramo(transporte);
+        return tramo;
     }
 
     public int crearTrayecto(Tramo ... tramos) {
@@ -50,8 +51,6 @@ public class Miembro {
             }
         }
 
-
-
         // TODO: deberia retornar el id del trayecto
         // podria devolver el objeto TRAYECTO.
         return 0;
@@ -69,7 +68,7 @@ public class Miembro {
         return null;
     }
 
-    public void solicitudUnionOrganizacion(Organizacion org) {
+    public void unirseAOrg(Organizacion org) {
         //TODO: deberia pasarle el sector tambien?
         org.solicitudNuevoMiembro(this);
     }
@@ -77,7 +76,4 @@ public class Miembro {
     //TODO: segun un id de trayecto se suma el miembro al viaje
     public void sumarseATrayecto(int idTrayecto) {
     }
-
-
-
 }

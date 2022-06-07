@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sector {
@@ -7,11 +8,13 @@ public class Sector {
     private List<Miembro> miembros;
     private Organizacion organizacion;
 
-    public Organizacion getOrganizacion() {
-        return organizacion;
+    public Sector(String nombre, Organizacion org) {
+        this.nombre = nombre;
+        this.organizacion = org;
+        this.miembros = new ArrayList<Miembro>();
     }
 
-    public void setOrganizacion(Organizacion organizacion) {
-        this.organizacion = organizacion;
+    public Organizacion getOrganizacion() {
+        return this.organizacion = organizacion;
     }
 }

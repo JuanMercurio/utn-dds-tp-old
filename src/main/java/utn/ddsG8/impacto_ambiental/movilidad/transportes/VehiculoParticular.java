@@ -1,7 +1,6 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes;
 
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
-import utn.ddsG8.impacto_ambiental.movilidad.Tramo;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 import utn.ddsG8.impacto_ambiental.services.distancia.DistanciaServicio;
 

@@ -16,7 +16,9 @@ public class Trayecto {
         this.organizaciones = new ArrayList<Organizacion>() ;
         this.tramos = new ArrayList<Tramo>() ;
     }
+
     public  void AgregarOrganizacion(Organizacion unaOrg){ organizaciones.add(unaOrg);}
+
     public void agregarTramo(Tramo tramo) {
         tramos.add(tramo);
     }
