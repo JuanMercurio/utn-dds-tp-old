@@ -1,6 +1,7 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
 import utn.ddsG8.impacto_ambiental.calculos.Medicion;
+import utn.ddsG8.impacto_ambiental.movilidad.Trayecto;
 import utn.ddsG8.impacto_ambiental.services.sheets.LectorExcel;
 
 import java.io.IOException;
@@ -13,8 +14,10 @@ public class Organizacion {
     private Clasificacion clasificacion;
     private Direccion direccion;
     private List<Sector> sectores;
-    private List<Miembro> potencialesMiembros;
+    private List<SolicitudMiembro> potencialesMiembros;
     private String archivoDatosActividades;
+    private List<Trayecto> trayectos;
+    //TODO: la medicion pertenece a una organizacion o le hacemos a la organizacion una lsita de mediciones?
     private List<Medicion> mediciones;
 
     public Organizacion(String razonSocial, OrgTipo tipo, Clasificacion clasificacion,
@@ -24,7 +27,8 @@ public class Organizacion {
         this.clasificacion       = clasificacion;
         this.direccion           = direccion;
         this.sectores            = new ArrayList<Sector>();
-        this.potencialesMiembros = new ArrayList<Miembro>();
+        this.potencialesMiembros = new ArrayList<SolicitudMiembro>();
+        this.mediciones          = new ArrayList<Medicion>();
     }
 
     public void cargarMediciones() throws IOException {
@@ -37,12 +41,14 @@ public class Organizacion {
         potencialesMiembros.forEach(m -> aceptarMiembro(m));
     }
 
-    public void aceptarMiembro(Miembro miembro) {
+    public void aceptarMiembro(SolicitudMiembro m) {
         // TODO: como hace una org para confirmar un miembro
+        m.getSolicitante().unirseAOrg(this, m.getSector());
     }
 
-    public void solicitudNuevoMiembro(Miembro miembro) {
-        potencialesMiembros.add(miembro);
+    public void solicitudNuevoMiembro(Miembro miembro, Sector sector) {
+        SolicitudMiembro solicitante = new SolicitudMiembro(miembro, sector);
+        potencialesMiembros.add(solicitante);
     }
 
     public void agregarSector(Sector sector) {
@@ -60,5 +66,13 @@ public class Organizacion {
     }
     public void setSectores(List<Sector> sectores) {
         this.sectores = sectores;
+    }
+
+    public List<Trayecto> getTrayectos() {
+        return trayectos;
+    }
+
+    public void setTrayectos(List<Trayecto> trayectos) {
+        this.trayectos = trayectos;
     }
 }

@@ -3,6 +3,7 @@ package utn.ddsG8.impacto_ambiental.estructura;
 import utn.ddsG8.impacto_ambiental.movilidad.Tramo;
 import utn.ddsG8.impacto_ambiental.movilidad.Trayecto;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.Transporte;
+import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,17 @@ public class Miembro {
         this.sectores.add(sector);
     }
 
-    public Tramo crearTramo(Transporte transporte) {
+    public Tramo crearTramo(Parada inicio, Parada fin, Transporte transporte) {
         Tramo tramo = new Tramo(transporte);
+        tramo.setDireccionFinal(fin.getDireccion());
+        tramo.setDireccionInicial(inicio.getDireccion());
+        return tramo;
+    }
+
+    public Tramo crearTramo(Direccion inicio, Direccion fin, Transporte transporte) {
+        Tramo tramo = new Tramo(transporte);
+        tramo.setDireccionInicial(inicio);
+        tramo.setDireccionFinal(fin);
         return tramo;
     }
 
@@ -68,12 +78,17 @@ public class Miembro {
         return null;
     }
 
-    public void unirseAOrg(Organizacion org) {
+    public void unirseAOrg(Organizacion org, Sector sector) {
         //TODO: deberia pasarle el sector tambien?
-        org.solicitudNuevoMiembro(this);
+        org.solicitudNuevoMiembro(this, sector);
     }
 
-    //TODO: segun un id de trayecto se suma el miembro al viaje
-    public void sumarseATrayecto(int idTrayecto) {
+    public void sumarseATrayecto(int id, Organizacion org) {
+        Trayecto trayecto = org.getTrayectos().stream().filter(t -> t.getId() == id)
+                .findAny()
+                .orElse(null);
+
+        trayecto.agregarMiembro(this);
+
     }
 }

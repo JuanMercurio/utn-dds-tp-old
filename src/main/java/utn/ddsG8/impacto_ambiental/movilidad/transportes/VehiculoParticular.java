@@ -7,8 +7,8 @@ import utn.ddsG8.impacto_ambiental.services.distancia.DistanciaServicio;
 import java.io.IOException;
 
 public abstract class VehiculoParticular implements Transporte {
-    private Direccion inicio;
-    private Direccion fin;
+    protected Direccion inicio;
+    protected Direccion fin;
 
     @Override
     public Distancia distancia(String token) throws IOException {

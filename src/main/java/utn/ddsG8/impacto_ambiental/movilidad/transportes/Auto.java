@@ -5,6 +5,5 @@ public class Auto extends VehiculoParticular {
 
     @Override
     public void calcularHC() {
-
     }
 }

@@ -1,9 +1,12 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes.publico;
 
+import utn.ddsG8.impacto_ambiental.estructura.Direccion;
+
 public class Parada {
 
     private Parada proximaParada;           // esto se podria hacer como una lista de paradas en la linea
     private Parada anteriorParada;          // verificar si es legal. Seria mas facil que esto
+    private Direccion direccion;
     private String nombre;
     private Linea linea;
 
@@ -47,4 +50,11 @@ public class Parada {
         this.proximaParada = parada;
     }
 
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
 }
