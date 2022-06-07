@@ -1,7 +1,9 @@
 package utn.ddsG8.impacto_ambiental.calculos;
 
 public class Medicion {
+    // todo: le agregamos la fecha de cuando se cargo?
     private String actividad;
+    //todo: creamos una clase tipo consumo donde tenga precargado las unidades?
     private String tipoConsumo;
     private String valor;
     private String periocidad;

@@ -21,6 +21,11 @@ public class DistanciaTest {
     public void retornaPaises() throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
         List<Pais> paises = api.paises(token, 1);
+        for (Pais unPais :paises) {
+            System.out.println(unPais.id);
+            System.out.println(unPais.nombre);
+
+        }
         Assertions.assertEquals("ARGENTINA", paises.get(0).nombre);
     }
 
@@ -42,6 +47,13 @@ public class DistanciaTest {
     public void retornaMunicipios() throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
         List<Municipio> municipios = api.municipios(token, 1);
+        for (Municipio unMunicipio: municipios
+             ) {
+            System.out.println(unMunicipio.nombre + ")");
+            System.out.println("El id es: "+unMunicipio.id);
+            System.out.println(unMunicipio.provincia.id+") Provincia: "+unMunicipio.provincia.nombre);
+            System.out.println();
+        }
         Assertions.assertTrue(municipios.size() > 0);
     }
 

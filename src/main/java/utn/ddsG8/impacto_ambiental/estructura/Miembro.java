@@ -37,11 +37,36 @@ public class Miembro {
         trayecto.agregarMiembro(this);
         for (Tramo tramo:tramos) {
             trayecto.agregarTramo(tramo);
+            //TODO: agregar las organizaciones que forman parte
+            // idea de que por la direccion detecta la organizacion.
+            // se podria pensar que le dice si es una organizacion o no. dentro de cada tramo.
+            Organizacion orgInicial = EstaYendoAOrganizacion(tramo.getDireccionInicial());
+            Organizacion orgFinal = EstaYendoAOrganizacion(tramo.getDireccionFinal());
+            if(orgInicial != null){
+                trayecto.AgregarOrganizacion(orgInicial);
+            }
+            if(orgFinal!= null){
+                trayecto.AgregarOrganizacion(orgFinal);
+            }
         }
-        //TODO: agregar las organizaciones que forman parte
+
+
 
         // TODO: deberia retornar el id del trayecto
+        // podria devolver el objeto TRAYECTO.
         return 0;
+    }
+    // TODO: estoy suponiendo que en una direccion solo hay una org
+    public Organizacion EstaYendoAOrganizacion(Direccion unaDireccion){
+        for (Sector unSector:this.sectores) {
+            Organizacion org = unSector.getOrganizacion();
+            Direccion dir = org.getDireccion();
+            if(dir == unaDireccion ){
+                return org;
+            }
+
+        }
+        return null;
     }
 
     public void solicitudUnionOrganizacion(Organizacion org) {

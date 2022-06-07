@@ -22,5 +22,38 @@ public class Tramo {
     public Distancia distancia(String token) throws IOException {
         return transporte.distancia(token);
     }
+    public Direccion getDireccionInicial() {
+        return direccionInicial;
+    }
+
+    public void setDireccionInicial(Direccion direccionInicial) {
+        this.direccionInicial = direccionInicial;
+    }
+
+    public Direccion getDireccionFinal() {
+        return direccionFinal;
+    }
+
+    public void setDireccionFinal(Direccion direccionFinal) {
+        this.direccionFinal = direccionFinal;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public Transporte getTransporte() {
+        return transporte;
+    }
+
+    public void setTransporte(Transporte transporte) {
+        this.transporte = transporte;
+    }
+
+
 
 }

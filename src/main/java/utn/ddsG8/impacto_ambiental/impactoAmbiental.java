@@ -11,6 +11,7 @@ public class impactoAmbiental {
         System.out.println("  A\nI M\nM B\nP I\nA E\nC N\nT T\nO A\n  L\n");
         LectorExcel lector = new LectorExcel();
         List<Medicion> mediciones = lector.obtenerDatosActividades("src/main/resources/ejemploDA.xlsx");
+        //TODO: la medicion pertenece a una organizacion o le hacemos a la organizacion una lsita de mediciones?
 
     }
 }
