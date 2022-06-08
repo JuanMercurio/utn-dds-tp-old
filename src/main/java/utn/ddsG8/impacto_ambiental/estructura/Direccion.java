@@ -8,6 +8,13 @@ public class Direccion {
     private String calle;
     private Integer altura;
 
+    public Direccion(String nombre, String calle, Integer altura, Localidad localidad) {
+        this.nombre = nombre;
+        this.calle = calle;
+        this.altura = altura;
+        this.localidad = localidad;
+    }
+
     private Localidad localidad;
 
     public Localidad getLocalidad() {
