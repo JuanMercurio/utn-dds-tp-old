@@ -10,9 +10,10 @@ import java.time.LocalDate;
 public class Tramo {
     private LocalDate fecha;
     private Transporte transporte;
+    private Distancia distancia;            // cuando se crea el tramo se deberia calcular la distancia y guardar aca
+                                            // esto es porque es aleatoria la distancia
     private Direccion DireccionFinal;
     private Direccion DireccionInicial;
-    // una solucion al tema de la orgs podria ser agregar organizacion por tramo
 
     public Direccion getDireccionFinal() {
         return DireccionFinal;
@@ -35,12 +36,22 @@ public class Tramo {
         this.fecha = LocalDate.now();
     }
 
-    public Distancia distancia(String token) {
+    public Distancia calcularDistancia(String token) {
         try {
-            return transporte.distancia(token);
+            return transporte.calcularDistancia(token);
         } catch (IOException e) {
             e.printStackTrace();
             return null; // un peligro pero bueno
         }
     }
+
+    public Distancia getDistancia() {
+        return this.distancia;
+    }
+
+    public void setDistancia(String token) {
+        this.distancia = this.calcularDistancia(token);
+    }
+
+
 }

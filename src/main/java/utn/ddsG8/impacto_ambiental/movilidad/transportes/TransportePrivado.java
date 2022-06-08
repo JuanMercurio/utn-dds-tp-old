@@ -16,7 +16,7 @@ public class TransportePrivado implements Transporte {
     }
 
     @Override
-    public Distancia distancia(String token) throws IOException {
+    public Distancia calcularDistancia(String token) throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
         return api.distancia(token, inicio, fin);
     }

@@ -31,40 +31,36 @@ public class Miembro {
 
     public Tramo crearTramo(Parada inicio, Parada fin, Transporte transporte) {
         Tramo tramo = new Tramo(transporte);
-        tramo.setDireccionFinal(fin.getDireccion());
-        tramo.setDireccionInicial(inicio.getDireccion());
         return tramo;
     }
 
     public Tramo crearTramo(Direccion inicio, Direccion fin, Transporte transporte) {
         Tramo tramo = new Tramo(transporte);
-        tramo.setDireccionInicial(inicio);
-        tramo.setDireccionFinal(fin);
         return tramo;
     }
 
-    public int crearTrayecto(Tramo ... tramos) {
-        Trayecto trayecto = new Trayecto();
-        trayecto.agregarMiembro(this);
-        for (Tramo tramo:tramos) {
-            trayecto.agregarTramo(tramo);
-            //TODO: agregar las organizaciones que forman parte
-            // idea de que por la direccion detecta la organizacion.
-            // se podria pensar que le dice si es una organizacion o no. dentro de cada tramo.
-            Organizacion orgInicial = EstaYendoAOrganizacion(tramo.getDireccionInicial());
-            Organizacion orgFinal = EstaYendoAOrganizacion(tramo.getDireccionFinal());
-            if(orgInicial != null){
-                trayecto.AgregarOrganizacion(orgInicial);
-            }
-            if(orgFinal!= null){
-                trayecto.AgregarOrganizacion(orgFinal);
-            }
-        }
+//    public int crearTrayecto(Tramo ... tramos) {
+//        Trayecto trayecto = new Trayecto();
+//        trayecto.agregarMiembro(this);
+//        for (Tramo tramo:tramos) {
+//            trayecto.agregarTramo(tramo);
+//            //TODO: agregar las organizaciones que forman parte
+//            // idea de que por la direccion detecta la organizacion.
+//            // se podria pensar que le dice si es una organizacion o no. dentro de cada tramo.
+//            Organizacion orgInicial = EstaYendoAOrganizacion(tramo.getDireccionInicial());
+//            Organizacion orgFinal = EstaYendoAOrganizacion(tramo.getDireccionFinal());
+//            if(orgInicial != null){
+//                trayecto.AgregarOrganizacion(orgInicial);
+//            }
+//            if(orgFinal!= null){
+//                trayecto.AgregarOrganizacion(orgFinal);
+//            }
+//        }
 
         // TODO: deberia retornar el id del trayecto
         // podria devolver el objeto TRAYECTO.
-        return 0;
-    }
+//        return 0;
+//    }
     // TODO: estoy suponiendo que en una direccion solo hay una org
     public Organizacion EstaYendoAOrganizacion(Direccion unaDireccion){
         for (Sector unSector:this.sectores) {

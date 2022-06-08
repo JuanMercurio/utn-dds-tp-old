@@ -6,6 +6,14 @@ public class Localidad {
     public int codPostal;
     public Municipio municipio;
 
+    public Localidad(int id, String nombre, int codPostal, Municipio municipio) {
+        this.id = id;
+        this.codPostal = codPostal;
+        this.municipio = municipio;
+        this.nombre = nombre;
+    }
+
+
     public int getId() {
         return this.id;
     }

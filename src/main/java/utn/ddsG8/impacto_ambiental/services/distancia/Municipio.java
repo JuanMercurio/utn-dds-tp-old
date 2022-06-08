@@ -10,5 +10,11 @@ public class Municipio {
     public int id;
     public String nombre;
     public Provincia provincia;
-    public Retrofit retrofit;
+//    public Retrofit retrofit;
+
+    public Municipio(int id, String nombre, Provincia provincia) {
+        this.id = id;
+        this.nombre = nombre;
+        this.provincia = provincia;
+    }
 }

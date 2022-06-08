@@ -4,18 +4,16 @@ import utn.ddsG8.impacto_ambiental.services.distancia.Localidad;
 import utn.ddsG8.impacto_ambiental.services.distancia.Municipio;
 
 public class Direccion {
-    private String nombre;
+    private String nombre; // esta de mas?
     private String calle;
     private Integer altura;
+    private Localidad localidad;
 
-    public Direccion(String nombre, String calle, Integer altura, Localidad localidad) {
-        this.nombre = nombre;
+    public Direccion(String calle, Integer altura, Localidad localidad) {
         this.calle = calle;
         this.altura = altura;
         this.localidad = localidad;
     }
-
-    private Localidad localidad;
 
     public Localidad getLocalidad() {
         return this.localidad;
