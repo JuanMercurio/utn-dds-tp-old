@@ -3,7 +3,7 @@ package utn.ddsG8.impacto_ambiental.movilidad.transportes;
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
-public class Pie implements Transporte {
+public class Pie extends TransportePrivado {
 
 
     @Override

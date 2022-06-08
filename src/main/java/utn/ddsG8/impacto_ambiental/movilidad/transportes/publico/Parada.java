@@ -4,12 +4,13 @@ import utn.ddsG8.impacto_ambiental.estructura.Direccion;
 
 public class Parada {
 
-    private Parada proximaParada;           // esto se podria hacer como una lista de paradas en la linea
-    private Parada anteriorParada;          // verificar si es legal. Seria mas facil que esto
+    private Parada proximaParada;
+    private Parada anteriorParada;
     private Direccion direccion;
     private String nombre;
     private Linea linea;
     private double distanciaProximaParada;
+    private double distanciaAnteriorParada;
 
     public Parada(String nombre, Linea linea, Parada proxima, Parada anterior) {
         this.nombre = nombre;

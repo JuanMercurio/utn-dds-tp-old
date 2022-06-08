@@ -89,6 +89,9 @@ public class Miembro {
                 .orElse(null);
 
         trayecto.agregarMiembro(this);
+    }
 
+    public void agregarATrayecto(Trayecto trayecto) {
+        trayecto.agregarMiembro(this);
     }
 }

@@ -4,7 +4,6 @@ import utn.ddsG8.impacto_ambiental.estructura.Miembro;
 import utn.ddsG8.impacto_ambiental.estructura.Organizacion;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class Trayecto {
     private List<Tramo> tramos;
     private int id;
 
-    public Trayecto() {
+public Trayecto() {
         this.miembros = new ArrayList<Miembro>() ;
         this.organizaciones = new ArrayList<Organizacion>() ;
         this.tramos = new ArrayList<Tramo>() ;

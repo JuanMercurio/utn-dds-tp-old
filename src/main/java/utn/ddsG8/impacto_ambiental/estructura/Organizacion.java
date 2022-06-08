@@ -17,7 +17,6 @@ public class Organizacion {
     private List<SolicitudMiembro> potencialesMiembros;
     private String archivoDatosActividades;
     private List<Trayecto> trayectos;
-    //TODO: la medicion pertenece a una organizacion o le hacemos a la organizacion una lsita de mediciones?
     private List<Medicion> mediciones;
 
     public Organizacion(String razonSocial, OrgTipo tipo, Clasificacion clasificacion,

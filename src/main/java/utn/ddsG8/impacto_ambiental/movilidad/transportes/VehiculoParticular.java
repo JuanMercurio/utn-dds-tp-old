@@ -1,18 +1,9 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes;
 
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
-import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
-import utn.ddsG8.impacto_ambiental.services.distancia.DistanciaServicio;
+import utn.ddsG8.impacto_ambiental.movilidad.transportes.combustibles.Combustible;
 
-import java.io.IOException;
+public abstract class VehiculoParticular extends TransportePrivado {
+    protected Combustible combustible;
 
-public abstract class VehiculoParticular implements Transporte {
-    protected Direccion inicio;
-    protected Direccion fin;
-
-    @Override
-    public Distancia distancia(String token) throws IOException {
-        DistanciaServicio api = DistanciaServicio.getInstancia();
-        return api.distancia(token, inicio, fin);
-    }
 }

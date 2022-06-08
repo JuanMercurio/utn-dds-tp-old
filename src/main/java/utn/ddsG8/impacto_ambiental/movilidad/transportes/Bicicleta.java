@@ -3,7 +3,7 @@ package utn.ddsG8.impacto_ambiental.movilidad.transportes;
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
-public class Bicicleta implements Transporte{
+public class Bicicleta extends TransportePrivado {
 
 
     @Override

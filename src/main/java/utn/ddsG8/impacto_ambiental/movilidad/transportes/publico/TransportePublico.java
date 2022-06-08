@@ -8,14 +8,12 @@ import java.io.IOException;
 public abstract class TransportePublico implements Transporte {
     protected Parada paradaInicio;
     protected Parada paradaFin;
+    protected Linea linea;
 
     @Override
     public Distancia distancia(String token) throws IOException {
-        int valor = paradaInicio.distanciaAParada(paradaFin);
-        //todo: unidades son necesarias?
-        String unidad = "m";
-        return new Distancia(valor, unidad);
-
+        // TODO
+        return null;
     }
 
     @Override
