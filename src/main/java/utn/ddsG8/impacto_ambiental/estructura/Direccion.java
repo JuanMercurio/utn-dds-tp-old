@@ -1,10 +1,9 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
 import utn.ddsG8.impacto_ambiental.services.distancia.Localidad;
-import utn.ddsG8.impacto_ambiental.services.distancia.Municipio;
 
 public class Direccion {
-    private String nombre; // esta de mas?
+    private String nombre;               // esta de mas?
     private String calle;
     private Integer altura;
     private Localidad localidad;

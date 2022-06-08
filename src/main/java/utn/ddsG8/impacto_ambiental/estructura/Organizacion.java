@@ -48,7 +48,7 @@ public class Organizacion {
     public void aceptarMiembro(SolicitudMiembro m) {
         // TODO: como hace una org para confirmar un miembro
         m.getSector().agregarMiembro(m.getSolicitante());
-        potencialesMiembros.remove(m);
+
     }
 
     public void aceptarTodosLosMiembros(){

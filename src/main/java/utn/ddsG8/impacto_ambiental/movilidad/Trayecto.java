@@ -22,11 +22,11 @@ public Trayecto() {
         // TODO: id
     }
 
-    public Distancia distancia() {
+    public void setDistancia() {
         float valor = (float) tramos.stream().mapToDouble(t -> t.getDistancia().valor)
                 .sum();
         final String unidad = "KM";         //hardcodeado .... deberia sacar que unidad segun las unidades de lo calculado
-        return new Distancia(valor, unidad);
+        this.distancia = new Distancia(valor, unidad);
     }
 
     public float distanciaTest() {
@@ -58,12 +58,8 @@ public Trayecto() {
 
     public Distancia getDistancia() {
         if (distancia == null) {
-
+            this.setDistancia();
         }
         return distancia;
-    }
-
-    public void setDistancia(Distancia distancia) {
-        this.distancia = distancia;
     }
 }

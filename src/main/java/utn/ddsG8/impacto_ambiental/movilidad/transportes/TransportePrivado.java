@@ -6,7 +6,7 @@ import utn.ddsG8.impacto_ambiental.services.distancia.DistanciaServicio;
 
 import java.io.IOException;
 
-public class TransportePrivado implements Transporte {
+public abstract class TransportePrivado implements Transporte {
     protected Direccion inicio;
     protected Direccion fin;
 
@@ -19,6 +19,10 @@ public class TransportePrivado implements Transporte {
     public Distancia calcularDistancia(String token) throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
         return api.distancia(token, inicio, fin);
+    }
+
+    public Distancia getDistanciaTramo() {
+        return null;
     }
 
 }
