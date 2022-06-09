@@ -5,6 +5,11 @@ import java.util.List;
 
 public class Sector {
     private String nombre;
+
+    public List<Miembro> getMiembros() {
+        return miembros;
+    }
+
     private List<Miembro> miembros;
     private Organizacion organizacion;
 
@@ -12,6 +17,10 @@ public class Sector {
         this.nombre = nombre;
         this.organizacion = org;
         this.miembros = new ArrayList<Miembro>();
+    }
+
+    public void agregarMiembro(Miembro miembro) {
+        miembros.add(miembro);
     }
 
     public Organizacion getOrganizacion() {

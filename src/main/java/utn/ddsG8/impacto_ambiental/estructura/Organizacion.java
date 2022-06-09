@@ -14,6 +14,11 @@ public class Organizacion {
     private Clasificacion clasificacion;
     private Direccion direccion;
     private List<Sector> sectores;
+
+    public List<SolicitudMiembro> getPotencialesMiembros() {
+        return potencialesMiembros;
+    }
+
     private List<SolicitudMiembro> potencialesMiembros;
     private String archivoDatosActividades;
     private List<Trayecto> trayectos;
@@ -42,7 +47,14 @@ public class Organizacion {
 
     public void aceptarMiembro(SolicitudMiembro m) {
         // TODO: como hace una org para confirmar un miembro
-        m.getSolicitante().unirseAOrg(this, m.getSector());
+        m.getSector().agregarMiembro(m.getSolicitante());
+
+    }
+
+    public void aceptarTodosLosMiembros(){
+        for(SolicitudMiembro solicitudMiembro : potencialesMiembros ){
+            aceptarMiembro(solicitudMiembro);
+        }
     }
 
     public void solicitudNuevoMiembro(Miembro miembro, Sector sector) {

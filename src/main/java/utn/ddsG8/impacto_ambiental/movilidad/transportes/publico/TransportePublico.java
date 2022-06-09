@@ -20,4 +20,9 @@ public abstract class TransportePublico implements Transporte {
     public void calcularHC() {
 
     }
+
+    @Override
+    public Distancia getDistanciaTramo(){
+        return null;
+    }
 }

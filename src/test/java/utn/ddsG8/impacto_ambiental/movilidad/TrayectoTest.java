@@ -1,7 +1,6 @@
 package utn.ddsG8.impacto_ambiental.movilidad;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
@@ -41,9 +40,10 @@ class TrayectoTest {
         Trayecto trayecto = new Trayecto();
         trayecto.agregarTramos(tramoAuto, tramoPie, tramoAuto, tramoPie);
         float distInt = trayecto.distanciaTest();
-        Distancia distancia = trayecto.distancia();
+        Distancia distancia = trayecto.getDistancia();
         System.out.println(distInt);
         Assertions.assertTrue(distInt > 0);
+        Assertions.assertTrue(distancia.valor > 0);
     }
 
     @Test
