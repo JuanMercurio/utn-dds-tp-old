@@ -2,6 +2,14 @@ package utn.ddsG8.services.distancia;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import utn.ddsG8.impacto_ambiental.estructura.Direccion;
+import utn.ddsG8.impacto_ambiental.estructura.Miembro;
+import utn.ddsG8.impacto_ambiental.estructura.TipoDoc;
+import utn.ddsG8.impacto_ambiental.movilidad.Trayecto;
+import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Colectivo;
+import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Linea;
+import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
+import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.TransportePublico;
 import utn.ddsG8.impacto_ambiental.services.distancia.*;
 
 import java.io.IOException;
@@ -46,7 +54,7 @@ public class DistanciaTest {
     @Test
     public void retornaMunicipios() throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
-        List<Municipio> municipios = api.municipios(token, 1);
+        List<Municipio> municipios = api.municipios(token, 10);
         for (Municipio unMunicipio: municipios
              ) {
             System.out.println(unMunicipio.nombre + ")");
@@ -67,7 +75,15 @@ public class DistanciaTest {
     @Test
     public void retornaLocalidades() throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
-        List<Localidad> localidades = api.localidades(token, 1);
+        List<Localidad> localidades = api.localidades(token, 100);
+        for (Localidad unaLocalidad: localidades) {
+            System.out.println(unaLocalidad.nombre + ")");
+            System.out.println("El id es: "+unaLocalidad.id);
+            System.out.println("El codigo postal: "+unaLocalidad.id);
+            //todo
+            //System.out.println("El municipio-provincia es: "+unaLocalidad.municipio.nombre+" - "+unaLocalidad.municipio.provincia.nombre);
+            System.out.println();
+        }
         Assertions.assertTrue(localidades.size() > 0);
     }
 
@@ -88,6 +104,7 @@ public class DistanciaTest {
                 457,
                 "O'Higgins",
                 "200");
+        System.out.println(distancia.valor);
         Assertions.assertTrue(distancia.valor > 0);
         Assertions.assertEquals("KM", distancia.unidad);
 

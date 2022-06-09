@@ -1,6 +1,10 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes.publico;
 
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
+import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
+import utn.ddsG8.impacto_ambiental.services.distancia.DistanciaServicio;
+
+import java.io.IOException;
 
 public class Parada {
 
@@ -9,33 +13,65 @@ public class Parada {
     private Direccion direccion;
     private String nombre;
     private Linea linea;
+    // lo agrega el administrador
     private double distanciaProximaParada;
     private double distanciaAnteriorParada;
-
-    public Parada(String nombre, Linea linea, Parada proxima, Parada anterior) {
+    // constructor
+    public Parada(String nombre, Linea linea) {
         this.nombre = nombre;
         this.linea = linea;
+
+    }
+
+    public void setProximaParada(Parada proxima, double distancia){
+        this.proximaParada = proxima;
+        this.distanciaProximaParada = distancia;
+    }
+    public void setAnteriorParada(Parada anterior, double distancia){
+        this.anteriorParada = anterior;
+        this.distanciaAnteriorParada = distancia;
+    }
+
+
+
+
+
+
+   // ya no tiene mucho sentido
+    public void AgregarParadaAnteriorYProxima(Parada proxima,Parada anterior){
         this.proximaParada = proxima;
         this.anteriorParada = anterior;
     }
 
+
     // not safe
-    public int distanciaAParada(Parada paradaFinal) {
+    //todo checkear con los nuevos cambios.
+    public double distanciaAParada(Parada paradaFinal) {
         return this.nombre == paradaFinal.nombre ?
-               0 : this.distanciaProximaParada() + this.proximaParada.distanciaAParada(paradaFinal);
+               0 : this.distanciaProximaParada + this.proximaParada.distanciaAParada(paradaFinal);
     }
-
-    public int distanciaProximaParada() {
-
-        // todo llamar a la API
-       return 0;
-    }
-
-   public void nuevaParada(Parada parada) {
+    public void nuevaParada(Parada parada) {
         parada.setProximaParada(this.proximaParada);
         parada.setAnteriorParada(this);
         this.proximaParada = parada;
-   }
+    }
+
+    // getters y setters genericos.
+      public double getDistanciaProximaParada() {
+        return distanciaProximaParada;
+    }
+
+    public void setDistanciaProximaParada(double distanciaProximaParada) {
+        this.distanciaProximaParada = distanciaProximaParada;
+    }
+
+    public double getDistanciaAnteriorParada() {
+        return distanciaAnteriorParada;
+    }
+
+    public void setDistanciaAnteriorParada(double distanciaAnteriorParada) {
+        this.distanciaAnteriorParada = distanciaAnteriorParada;
+    }
 
     public Parada getProximaParada() {
         return this.proximaParada;
