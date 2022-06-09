@@ -26,7 +26,7 @@ class TrayectoTest {
     private Tramo tramoPie;
 
     @BeforeEach
-    public void inicarTramos() {
+    public void iniciarTramos() {
         Auto auto = new Auto(inicio, fin, null);
         Pie pie = new Pie(inicio, fin);
         this.tramoAuto = new Tramo(auto);
@@ -39,10 +39,7 @@ class TrayectoTest {
     public void multiplesTrayectosAutoTest() {
         Trayecto trayecto = new Trayecto();
         trayecto.agregarTramos(tramoAuto, tramoPie, tramoAuto, tramoPie);
-        float distInt = trayecto.distanciaTest();
         Distancia distancia = trayecto.getDistancia();
-        System.out.println(distInt);
-        Assertions.assertTrue(distInt > 0);
         Assertions.assertTrue(distancia.valor > 0);
     }
 

@@ -14,11 +14,6 @@ public class Organizacion {
     private Clasificacion clasificacion;
     private Direccion direccion;
     private List<Sector> sectores;
-
-    public List<SolicitudMiembro> getPotencialesMiembros() {
-        return potencialesMiembros;
-    }
-
     private List<SolicitudMiembro> potencialesMiembros;
     private String archivoDatosActividades;
     private List<Trayecto> trayectos;
@@ -33,6 +28,11 @@ public class Organizacion {
         this.sectores            = new ArrayList<Sector>();
         this.potencialesMiembros = new ArrayList<SolicitudMiembro>();
         this.mediciones          = new ArrayList<Medicion>();
+    }
+
+
+    public List<SolicitudMiembro> getPotencialesMiembros() {
+        return potencialesMiembros;
     }
 
     public void cargarMediciones() throws IOException {
