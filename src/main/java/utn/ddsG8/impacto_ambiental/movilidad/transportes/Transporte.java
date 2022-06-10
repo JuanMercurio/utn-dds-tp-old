@@ -7,6 +7,6 @@ import java.io.IOException;
 public interface Transporte {
 
     public void calcularHC();
-    public Distancia calcularDistancia(String token) throws IOException;
+    public Distancia calcularDistancia() throws IOException;
     public Distancia getDistanciaTramo();
 }

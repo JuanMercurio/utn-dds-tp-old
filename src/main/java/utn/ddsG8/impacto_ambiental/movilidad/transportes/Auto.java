@@ -6,10 +6,11 @@ import utn.ddsG8.impacto_ambiental.movilidad.transportes.combustibles.Combustibl
 
 public class Auto extends VehiculoParticular {
 
-    public Auto(Direccion inicio, Direccion fin, Combustible combustible) {
+    public Auto(String token, Direccion inicio, Direccion fin, Combustible combustible) {
         this.inicio = inicio;
         this.fin = fin;
         this.combustible = combustible;
+        this.token = token;
     }
 
     @Override

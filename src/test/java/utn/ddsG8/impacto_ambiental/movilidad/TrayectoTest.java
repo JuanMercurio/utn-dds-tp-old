@@ -27,12 +27,10 @@ class TrayectoTest {
 
     @BeforeEach
     public void iniciarTramos() {
-        Auto auto = new Auto(inicio, fin, null);
-        Pie pie = new Pie(inicio, fin);
+        Auto auto = new Auto(token, inicio, fin, null);
+        Pie pie = new Pie(token, inicio, fin);
         this.tramoAuto = new Tramo(auto);
         this.tramoPie = new Tramo(pie);
-        tramoAuto.setDistancia(token);
-        tramoPie.setDistancia(token);
     }
 
     @Test
@@ -40,6 +38,14 @@ class TrayectoTest {
         Trayecto trayecto = new Trayecto();
         trayecto.agregarTramos(tramoAuto, tramoPie, tramoAuto, tramoPie);
         Distancia distancia = trayecto.getDistancia();
+        Assertions.assertTrue(distancia.valor > 0);
+    }
+
+    @Test
+    public void distanciaDeTramoSegunIndiceTest() {
+        Trayecto trayecto = new Trayecto();
+        trayecto.agregarTramos(tramoAuto, tramoPie, tramoAuto, tramoPie);
+        Distancia distancia = trayecto.getDistanciaDeTramo(2);
         Assertions.assertTrue(distancia.valor > 0);
     }
 

@@ -7,8 +7,8 @@ public class Administrador {
     public void CrearColectivo(){
 
     }
-    public void CrearParada(){
 
+    public void CrearParada(){
 
     }
 }

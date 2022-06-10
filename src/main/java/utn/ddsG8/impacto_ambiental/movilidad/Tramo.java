@@ -10,48 +10,29 @@ import java.time.LocalDate;
 public class Tramo {
     private LocalDate fecha;
     private Transporte transporte;
-    private Distancia distancia;            // cuando se crea el tramo se deberia calcular la distancia y guardar aca
-                                            // esto es porque es aleatoria la distancia
+    private Distancia distancia;
     private Direccion DireccionFinal;
     private Direccion DireccionInicial;
-
-    public Direccion getDireccionFinal() {
-        return DireccionFinal;
-    }
-
-    public void setDireccionFinal(Direccion direccionFinal) {
-        DireccionFinal = direccionFinal;
-    }
-
-    public Direccion getDireccionInicial() {
-        return DireccionInicial;
-    }
-
-    public void setDireccionInicial(Direccion direccionInicial) {
-        DireccionInicial = direccionInicial;
-    }
 
     public Tramo(Transporte transporte) {
         this.transporte = transporte;
         this.fecha = LocalDate.now();
+        this.distancia = calcularDistancia();
     }
 
-    public Distancia calcularDistancia(String token) {
+    public Distancia calcularDistancia() {
         try {
-            return transporte.calcularDistancia(token);
+            return transporte.calcularDistancia();
         } catch (IOException e) {
             e.printStackTrace();
+            // TODO: forma elegante de hacer esto
             return null; // un peligro pero bueno
         }
     }
 
-    public Distancia getDistancia() {
-        return this.distancia;
-    }
-
-    public void setDistancia(String token) {
-        this.distancia = this.calcularDistancia(token);
-    }
-
-
+    public Direccion getDireccionFinal() { return DireccionFinal; }
+    public void setDireccionFinal(Direccion direccionFinal) { DireccionFinal = direccionFinal; }
+    public Direccion getDireccionInicial() { return DireccionInicial; }
+    public void setDireccionInicial(Direccion direccionInicial) { DireccionInicial = direccionInicial; }
+    public Distancia getDistancia() { return this.distancia; }
 }

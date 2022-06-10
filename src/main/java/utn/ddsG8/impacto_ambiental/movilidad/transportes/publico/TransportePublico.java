@@ -11,7 +11,7 @@ public abstract class TransportePublico implements Transporte {
     protected Linea linea;
 
     @Override
-    public Distancia calcularDistancia(String token) throws IOException {
+    public Distancia calcularDistancia() throws IOException {
         // TODO
         return null;
     }

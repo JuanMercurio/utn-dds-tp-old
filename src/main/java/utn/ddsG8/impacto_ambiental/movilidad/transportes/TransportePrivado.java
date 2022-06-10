@@ -9,6 +9,7 @@ import java.io.IOException;
 public abstract class TransportePrivado implements Transporte {
     protected Direccion inicio;
     protected Direccion fin;
+    protected String token;
 
     @Override
     public void calcularHC() {
@@ -16,9 +17,9 @@ public abstract class TransportePrivado implements Transporte {
     }
 
     @Override
-    public Distancia calcularDistancia(String token) throws IOException {
+    public Distancia calcularDistancia() throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
-        return api.distancia(token, inicio, fin);
+        return api.distancia(this.token, inicio, fin);
     }
 
     public Distancia getDistanciaTramo() {

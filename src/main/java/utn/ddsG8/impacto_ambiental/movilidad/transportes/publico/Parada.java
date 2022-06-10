@@ -16,7 +16,7 @@ public class Parada {
     // lo agrega el administrador
     private double distanciaProximaParada;
     private double distanciaAnteriorParada;
-    // constructor
+
     public Parada(String nombre, Linea linea) {
         this.nombre = nombre;
         this.linea = linea;
