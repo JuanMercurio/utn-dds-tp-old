@@ -9,6 +9,7 @@ import utn.ddsG8.impacto_ambiental.movilidad.transportes.Pie;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.combustibles.Combustible;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.combustibles.Nafta;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.Auto;
+import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Linea;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Tren;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
@@ -55,7 +56,7 @@ class TramoTest {
         Assertions.assertTrue(distanciaTramo.valor > 0);
 
     }
-
+//
 //    @Test
 //    public void trenDistancia() {
 //        Parada paradaInicio = new Parada("Viva el grupo 8", null);
@@ -65,6 +66,16 @@ class TramoTest {
 //        Distancia distanciaTramo= tramo.getDistancia();
 //        Assertions.assertTrue(distanciaTramo.valor > 0);
 //    }
+
+    private void crearLineaSubte() {
+        Linea linea = new Linea("linea");
+
+        for (int i = 0; i <10; i++) {
+//            Parada parada = new Parada("parada", i);
+
+        }
+
+    }
 
 
 }

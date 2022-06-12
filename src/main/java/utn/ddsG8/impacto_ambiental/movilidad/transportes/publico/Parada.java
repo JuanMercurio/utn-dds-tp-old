@@ -17,10 +17,13 @@ public class Parada {
     private double distanciaProximaParada;
     private double distanciaAnteriorParada;
 
-    public Parada(String nombre, Linea linea) {
+    public Parada(String nombre, Linea linea, Direccion direccion, double distanciaProxima, double distanciaAnterior, int i) {
         this.nombre = nombre;
         this.linea = linea;
-
+        this.direccion = direccion;
+        this.distanciaProximaParada = distanciaProxima;
+        this.distanciaAnteriorParada = distanciaAnterior;
+        linea.agregarParada(this, distanciaProxima, distanciaAnterior, i);
     }
 
     public void setProximaParada(Parada proxima, double distancia){

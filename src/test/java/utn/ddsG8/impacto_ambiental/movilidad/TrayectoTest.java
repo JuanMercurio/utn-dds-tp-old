@@ -34,7 +34,7 @@ class TrayectoTest {
     }
 
     @Test
-    public void multiplesTrayectosAutoTest() {
+    public void autoYPieTest() {
         Trayecto trayecto = new Trayecto();
         trayecto.agregarTramos(tramoAuto, tramoPie, tramoAuto, tramoPie);
         Distancia distancia = trayecto.getDistancia();
@@ -70,17 +70,17 @@ class TrayectoTest {
 
         Linea linea19 = new Linea("Linea 19");
 
-        Parada parada1 = new Parada("primer parada",linea19);
-        Parada parada2 = new Parada("segunda parada",linea19);
-        Parada parada3 = new Parada("tercer parada",linea19);
-        parada1.AgregarParadaAnteriorYProxima(parada2,null);
-        parada2.AgregarParadaAnteriorYProxima(parada3,parada1);
-        parada2.AgregarParadaAnteriorYProxima(null,parada2);
-
-        parada1.setDireccion(dirParada1);
-        parada2.setDireccion(dirParada1);
-        parada3.setDireccion(dirParada1);
-        Colectivo colectivo19 = new Colectivo(linea19,parada1,parada3);
+//        Parada parada1 = new Parada("primer parada",linea19);
+//        Parada parada2 = new Parada("segunda parada",linea19);
+//        Parada parada3 = new Parada("tercer parada",linea19);
+//        parada1.AgregarParadaAnteriorYProxima(parada2,null);
+//        parada2.AgregarParadaAnteriorYProxima(parada3,parada1);
+//        parada2.AgregarParadaAnteriorYProxima(null,parada2);
+//
+//        parada1.setDireccion(dirParada1);
+//        parada2.setDireccion(dirParada1);
+//        parada3.setDireccion(dirParada1);
+//        Colectivo colectivo19 = new Colectivo(linea19,parada1,parada3);
 
         //TransportePublico unaTransportePublico = new TransportePublico();
 

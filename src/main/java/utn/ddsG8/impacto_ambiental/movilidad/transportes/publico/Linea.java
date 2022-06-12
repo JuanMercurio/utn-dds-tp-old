@@ -10,9 +10,16 @@ public class Linea {
         this.nombre = nombre;
     }
 
-    public void agregarParada(Parada nueva, Parada ant) {
-        Parada parada = paradas.get(paradas.indexOf(ant));
-        parada.nuevaParada(nueva);
+    public void agregarParada(Parada nueva, double distProxima, double distAnterior, int i) {
+        paradas.add(i, nueva);
+        Parada anterior = paradas.get(i-1);
+        Parada proxima = paradas.get(i+1);
+
+        nueva.setAnteriorParada(anterior);
+        nueva.setAnteriorParada(proxima);
+
+        proxima.setDistanciaAnteriorParada(distProxima);
+        anterior.setDistanciaProximaParada(distAnterior);
     }
 
 }

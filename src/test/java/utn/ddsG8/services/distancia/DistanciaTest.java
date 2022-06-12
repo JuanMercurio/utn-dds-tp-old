@@ -2,14 +2,7 @@ package utn.ddsG8.services.distancia;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utn.ddsG8.impacto_ambiental.estructura.Direccion;
-import utn.ddsG8.impacto_ambiental.estructura.Miembro;
-import utn.ddsG8.impacto_ambiental.estructura.TipoDoc;
-import utn.ddsG8.impacto_ambiental.movilidad.Trayecto;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Colectivo;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Linea;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.TransportePublico;
+
 import utn.ddsG8.impacto_ambiental.services.distancia.*;
 
 import java.io.IOException;
