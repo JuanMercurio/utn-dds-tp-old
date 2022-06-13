@@ -24,12 +24,22 @@ class MiembroTest {
     private Direccion direccionOrg = new Direccion("medrano", 1234, unaLocalidad);
     private Organizacion unaOrganizacion = new Organizacion("Escuela", OrgTipo.ONG, Clasificacion.Ministerio, direccionOrg);
     private Sector unSector = new Sector("Desarrollo", unaOrganizacion);
+    private Sector otroSector = new Sector("Direccion", unaOrganizacion);
 
     @Test
     public void solicitarMiembroAOrg() throws IOException {
         unMiembro.unirseAOrg(unaOrganizacion,unSector);
         unaOrganizacion.aceptarTodosLosMiembros();
         Assertions.assertTrue(unSector.getMiembros().contains(unMiembro));
+    }
+
+    @Test
+    public void miembroEnDosSectoresDeOrg() throws IOException {
+        unMiembro.unirseAOrg(unaOrganizacion,unSector);
+        unMiembro.unirseAOrg(unaOrganizacion,otroSector);
+        unaOrganizacion.aceptarTodosLosMiembros();
+        Assertions.assertTrue(unSector.getMiembros().contains(unMiembro));
+        Assertions.assertTrue(otroSector.getMiembros().contains(unMiembro));
     }
 
 
