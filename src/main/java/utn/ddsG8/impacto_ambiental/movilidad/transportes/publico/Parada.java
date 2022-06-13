@@ -2,9 +2,6 @@ package utn.ddsG8.impacto_ambiental.movilidad.transportes.publico;
 
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
-import utn.ddsG8.impacto_ambiental.services.distancia.DistanciaServicio;
-
-import java.io.IOException;
 
 public class Parada {
 
@@ -12,76 +9,39 @@ public class Parada {
     private Parada anteriorParada;
     private Direccion direccion;
     private String nombre;
-    private Linea linea;
-    // lo agrega el administrador
-    private double distanciaProximaParada;
-    private double distanciaAnteriorParada;
+    private TransportePublico tranportePublico;
+    private Distancia distanciaProximaParada;
+    private Distancia distanciaAnteriorParada; //TODO por ahora no se usa esto, analizar si lo sacamos
 
-    public Parada(String nombre, Linea linea, Direccion direccion, double distanciaProxima, double distanciaAnterior, int i) {
+    public Parada(String nombre, TransportePublico transportePublico, Direccion direccion, float distanciaProxima, float distanciaAnterior, int i) {
         this.nombre = nombre;
-        this.linea = linea;
+        this.tranportePublico = transportePublico;
         this.direccion = direccion;
-        this.distanciaProximaParada = distanciaProxima;
-        this.distanciaAnteriorParada = distanciaAnterior;
-        linea.agregarParada(this, distanciaProxima, distanciaAnterior, i);
+        // Analizar si la unidad de las distancia siempre sera KM y si deberia tener un parametro "unidad" el constructor
+        this.distanciaProximaParada = new Distancia(distanciaProxima, "KM");
+        this.distanciaAnteriorParada = new Distancia(distanciaAnterior, "KM");
+        transportePublico.agregarParada(this, distanciaProxima, distanciaAnterior, i);
     }
 
-    public void setProximaParada(Parada proxima, double distancia){
-        this.proximaParada = proxima;
-        this.distanciaProximaParada = distancia;
-    }
-    public void setAnteriorParada(Parada anterior, double distancia){
-        this.anteriorParada = anterior;
-        this.distanciaAnteriorParada = distancia;
-    }
-
-
-
-
-
-
-   // ya no tiene mucho sentido
-    public void AgregarParadaAnteriorYProxima(Parada proxima,Parada anterior){
-        this.proximaParada = proxima;
-        this.anteriorParada = anterior;
+    public float distanciaAParada(Parada paradaFinal) {
+        float sum = 0;
+        for (Parada parada :this.tranportePublico.getParadas()) {
+            sum += parada.distanciaProximaParada.valor ;
+            if (parada == paradaFinal) break;
+        }
+        return sum;
     }
 
-
-    // not safe
-    //todo checkear con los nuevos cambios.
-    public double distanciaAParada(Parada paradaFinal) {
-        return this.nombre == paradaFinal.nombre ?
-               0 : this.distanciaProximaParada + this.proximaParada.distanciaAParada(paradaFinal);
-    }
-    public void nuevaParada(Parada parada) {
-        parada.setProximaParada(this.proximaParada);
-        parada.setAnteriorParada(this);
-        this.proximaParada = parada;
+    public Distancia getDistanciaProximaParada() {
+        return this.distanciaProximaParada;
     }
 
-    // getters y setters genericos.
-      public double getDistanciaProximaParada() {
-        return distanciaProximaParada;
+    public void setDistanciaProximaParada(float distanciaProximaParada) {
+        this.distanciaProximaParada = new Distancia(distanciaProximaParada, "KM");
     }
 
-    public void setDistanciaProximaParada(double distanciaProximaParada) {
-        this.distanciaProximaParada = distanciaProximaParada;
-    }
-
-    public double getDistanciaAnteriorParada() {
-        return distanciaAnteriorParada;
-    }
-
-    public void setDistanciaAnteriorParada(double distanciaAnteriorParada) {
-        this.distanciaAnteriorParada = distanciaAnteriorParada;
-    }
-
-    public Parada getProximaParada() {
-        return this.proximaParada;
-    }
-
-    public Parada getAnteriorParada() {
-        return anteriorParada;
+    public void setDistanciaAnteriorParada(float distanciaAnteriorParada) {
+        this.distanciaAnteriorParada = new Distancia(distanciaAnteriorParada, "KM");
     }
 
     public void setAnteriorParada(Parada anteriorParada) {

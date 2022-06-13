@@ -29,15 +29,6 @@ public class Miembro {
         this.sectores.add(sector);
     }
 
-    public Tramo crearTramo(Parada inicio, Parada fin, Transporte transporte) {
-        Tramo tramo = new Tramo(transporte);
-        return tramo;
-    }
-
-    public Tramo crearTramo(Direccion inicio, Direccion fin, Transporte transporte) {
-        Tramo tramo = new Tramo(transporte);
-        return tramo;
-    }
 
 //    public int crearTrayecto(Tramo ... tramos) {
 //        Trayecto trayecto = new Trayecto();

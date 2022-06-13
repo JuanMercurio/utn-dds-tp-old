@@ -1,11 +1,10 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes.publico;
 
+import java.util.ArrayList;
+
 public class Tren extends TransportePublico {
 
-    public Tren(Linea linea, Parada paradaInicio, Parada ParadaFin) {
-        this.paradaInicio = paradaInicio;
-        this.paradaFin = paradaFin;
-        this.linea = linea;
-
+    public Tren(String nombre) {
+        this.paradas = new ArrayList<Parada>();
     }
 }

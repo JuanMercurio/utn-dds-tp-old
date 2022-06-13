@@ -5,11 +5,8 @@ import utn.ddsG8.impacto_ambiental.movilidad.transportes.combustibles.Combustibl
 
 public class Moto extends VehiculoParticular {
 
-    public Moto(String token, Direccion inicio, Direccion fin, Combustible combustible) {
-        this.inicio = inicio;
-        this.fin = fin;
+    public Moto(Combustible combustible) {
         this.combustible = combustible;
-        this.token = token;
     }
 
     @Override

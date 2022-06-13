@@ -8,4 +8,8 @@ public class Distancia {
         this.valor = valor;
         this.unidad = unidad;
     }
+
+    public Distancia sumar(Distancia distancia) {
+        return new Distancia(distancia.valor + valor, "KM");
+    }
 }

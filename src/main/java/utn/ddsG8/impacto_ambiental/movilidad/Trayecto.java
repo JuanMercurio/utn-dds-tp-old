@@ -15,17 +15,16 @@ public class Trayecto {
     private Distancia distancia;
     private int id;
 
-public Trayecto() {
+    public Trayecto() {
         this.miembros = new ArrayList<Miembro>() ;
         this.organizaciones = new ArrayList<Organizacion>() ;
         this.tramos = new ArrayList<Tramo>() ;
-        // TODO: id
+        // TODO: id?
+        // TODO: falta una forma de agregar las organizaciones que forman parte del trayecto
     }
 
     public Distancia getDistancia() {
-        if (distancia == null) {
-            this.setDistancia();
-        }
+        if (distancia == null) this.setDistancia();
         return distancia;
     }
 
@@ -33,16 +32,11 @@ public Trayecto() {
         return tramos.get(index).getDistancia();
     }
 
-
     private void setDistancia() {
-        float valor = (float) tramos.stream().mapToDouble(t -> t.getDistancia().valor)
-                .sum();
-        final String unidad = "KM";         //hardcodeado .... deberia sacar que unidad segun las unidades de lo calculado
+        float valor = (float) tramos.stream().mapToDouble(t -> t.getDistancia().valor) .sum();
+        final String unidad = tramos.get(0).getDistancia().unidad;
         this.distancia = new Distancia(valor, unidad);
     }
-
-
-    public  void AgregarOrganizacion(Organizacion unaOrg){ organizaciones.add(unaOrg);}
 
     public void agregarTramo(Tramo tramo) {
         tramos.add(tramo);
@@ -50,6 +44,10 @@ public Trayecto() {
 
     public void agregarTramos(Tramo ... tramo) {
         Stream.of(tramo).forEach(t -> tramos.add(t));
+    }
+
+    public  void AgregarOrganizacion(Organizacion unaOrg) {
+        this.organizaciones.add(unaOrg);
     }
 
     public void agregarMiembro(Miembro miembro) {
@@ -60,8 +58,5 @@ public Trayecto() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
 }
