@@ -14,25 +14,24 @@ public class LectorExcelTest {
     public void obtieneDatos() throws IOException {
         LectorExcel lector = new LectorExcel();
         List<Medicion> mediciones = lector.obtenerDatosActividades("src/main/resources/ejemploDA.xlsx");
-        for (Medicion unaMedicion: mediciones) {
-            System.out.println("Actividad"+unaMedicion.getActividad()+", TipoMedicion:"+unaMedicion.getTipoConsumo()
-            +"Fecha: "+unaMedicion.getPeriodoDeImputacion());
-        }
         Assertions.assertTrue(mediciones.size() > 0);
     }
 
     @Test
     public void imprimeDatos() throws IOException {
         LectorExcel lector = new LectorExcel();
+        System.out.format("%-45s%-35s%-15s%-15s%-10s\n", "ACTIVIDAD", "TIPO DE CONSUMO", "VALOR", "PERIOCIDAD", "PERIODO DE IMPUTACION");
         List<Medicion> mediciones = lector.obtenerDatosActividades("src/main/resources/ejemploDA.xlsx");
         mediciones.forEach(m -> imprimirRegistro(m));
     }
 
     public void imprimirRegistro(Medicion medicion) {
-        System.out.println(medicion.getActividad() + "," +
-                medicion.getTipoConsumo() + "," +
-                medicion.getValor() + "," +
-                medicion.getPeriocidad() + "," +
+        System.out.format("%-45s%-35s%-15s%-15s%-10s\n",
+                medicion.getActividad(),
+                medicion.getTipoConsumo(),
+                medicion.getValor(),
+                medicion.getPeriocidad(),
                 medicion.getPeriodoDeImputacion());
     }
+
 }

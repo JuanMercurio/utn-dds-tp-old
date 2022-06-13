@@ -1,6 +1,7 @@
 package utn.ddsG8.impacto_ambiental.services.sheets;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -37,7 +38,7 @@ public class LectorExcel {
             Medicion medicion = new Medicion();
             medicion.setActividad(cellIterator.next().getStringCellValue());
             medicion.setTipoConsumo(cellIterator.next().getStringCellValue());
-            medicion.setValor(cellIterator.next().getStringCellValue());
+            medicion.setValor(getValor(cellIterator.next()));
             medicion.setPeriocidad(cellIterator.next().getStringCellValue());
             medicion.setPeriodoDeImputacion(cellIterator.next().getStringCellValue());
 
@@ -47,5 +48,11 @@ public class LectorExcel {
 
         return mediciones;
     }
+
+    private String getValor(Cell cell) {
+        // no toma en cuenta todos los tipos de celdas
+        return cell.getCellType() == CellType.NUMERIC ? Double.toString(cell.getNumericCellValue()) : cell.getStringCellValue();
+    }
+
 
 }
