@@ -46,7 +46,7 @@ public class Trayecto {
         Stream.of(tramo).forEach(t -> tramos.add(t));
     }
 
-    public  void AgregarOrganizacion(Organizacion unaOrg) {
+    public  void agregarOrganizacion(Organizacion unaOrg) {
         this.organizaciones.add(unaOrg);
     }
 

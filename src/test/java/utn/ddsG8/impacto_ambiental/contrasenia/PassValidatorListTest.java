@@ -1,14 +1,11 @@
-package utn.ddsG8.contrasenia;
+package utn.ddsG8.impacto_ambiental.contrasenia;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utn.ddsG8.impacto_ambiental.contrasenia.PassValidatorList;
 
 import java.io.FileNotFoundException;
 
 class PassValidatorListTest {
-
-    // TODO: mejorar tests
 
     @Test
     public void listTest() throws FileNotFoundException {

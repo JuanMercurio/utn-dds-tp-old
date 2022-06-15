@@ -1,18 +1,12 @@
-package utn.ddsG8.estructura;
+package utn.ddsG8.impacto_ambiental.estructura;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utn.ddsG8.impacto_ambiental.contrasenia.PassValidatorList;
-import utn.ddsG8.impacto_ambiental.estructura.*;
 import utn.ddsG8.impacto_ambiental.services.distancia.Localidad;
 import utn.ddsG8.impacto_ambiental.services.distancia.Municipio;
 import utn.ddsG8.impacto_ambiental.services.distancia.Provincia;
 import utn.ddsG8.impacto_ambiental.services.distancia.Pais;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 class MiembroTest {
 

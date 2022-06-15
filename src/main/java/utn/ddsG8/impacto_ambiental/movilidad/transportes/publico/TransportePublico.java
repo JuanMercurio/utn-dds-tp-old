@@ -1,6 +1,7 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes.publico;
 
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.Transporte;
+import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
 
 import java.util.List;
 
@@ -9,6 +10,8 @@ public abstract class TransportePublico implements Transporte {
     protected List<Parada> paradas;
 
     public void agregarParada(Parada nueva, float distProxima, float distAnterior, int i) {
+        // IMPORTANTE: Esta implementado como que el administrador pone 0 para la primera parada, no 1
+        // Se puede cambiar con un simple -1. Decidir que queda
         paradas.add(i, nueva);
         Parada anterior = paradas.get(Math.max(0, i-1));
         Parada proxima = paradas.get(Math.min(i+1, paradas.size() - 1));
@@ -18,11 +21,6 @@ public abstract class TransportePublico implements Transporte {
         else nueva.setAnteriorParada(anterior);
         if (i == paradas.size() - 1) nueva.setProximaParada(null);
         else nueva.setAnteriorParada(proxima);
-    }
-
-    @Override
-    public void calcularHC() {
-
     }
 
     public List<Parada> getParadas() {

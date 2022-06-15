@@ -1,13 +1,13 @@
-package utn.ddsG8.services.sheets;
+package utn.ddsG8.impacto_ambiental.services.sheets;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import utn.ddsG8.impacto_ambiental.calculos.Medicion;
-import utn.ddsG8.impacto_ambiental.services.sheets.LectorExcel;
 
 import java.io.IOException;
 import java.util.List;
 
+// TODO: eliminar prints de estos tests despues de mostarle a pablo
 public class LectorExcelTest {
 
     @Test
@@ -20,9 +20,13 @@ public class LectorExcelTest {
     @Test
     public void imprimeDatos() throws IOException {
         LectorExcel lector = new LectorExcel();
+        System.out.println();
+        System.out.println("Imprime archivo leido");
+        System.out.println();
         System.out.format("%-45s%-35s%-15s%-15s%-10s\n", "ACTIVIDAD", "TIPO DE CONSUMO", "VALOR", "PERIOCIDAD", "PERIODO DE IMPUTACION");
         List<Medicion> mediciones = lector.obtenerDatosActividades("src/main/resources/ejemploDA.xlsx");
         mediciones.forEach(m -> imprimirRegistro(m));
+        System.out.println();
     }
 
     public void imprimirRegistro(Medicion medicion) {

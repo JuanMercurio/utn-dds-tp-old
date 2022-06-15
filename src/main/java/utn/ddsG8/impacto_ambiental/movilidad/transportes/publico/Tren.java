@@ -7,4 +7,9 @@ public class Tren extends TransportePublico {
     public Tren(String nombre) {
         this.paradas = new ArrayList<Parada>();
     }
+
+    @Override
+    public void calcularHC() {
+
+    }
 }

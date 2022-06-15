@@ -1,9 +1,13 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes;
 
 public class ServicioContratado extends TransportePrivado {
-    // TODO: 1. Atributos de esta clase
-    //       2. Test de alta de serviciosContratados
+    private String nombre;
 
+    public ServicioContratado(String nombre) {
+        this.nombre = nombre;
+    }
+
+    // Tal vez lo calcula igual que el auto, confirmar
     @Override
     public void calcularHC() {
     }

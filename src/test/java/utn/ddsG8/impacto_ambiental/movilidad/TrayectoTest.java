@@ -1,6 +1,7 @@
 package utn.ddsG8.impacto_ambiental.movilidad;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
@@ -13,23 +14,23 @@ import utn.ddsG8.impacto_ambiental.services.distancia.*;
 
 
 class TrayectoTest {
-    private final String token = "Bearer E8iN6xBPXQsUI+M72MfPdVhM/o3axkzywqKZjjOyhe0=";
-    private final Localidad localidad = new Localidad(3908, "ALDEA BRASILERA", 3101, null);
-    private final Direccion inicio = new Direccion("Grupo8", 100, localidad);
-    private final Direccion fin = new Direccion("No llegamos con la entrega", 100, localidad);
-    private Tramo tramoAuto;
-    private Tramo tramoPie;
-    private TransportePublico transportePublico;
-    private Tramo tramoTren1;
-    private Tramo tramoTren2;
+    private static final String token = "Bearer E8iN6xBPXQsUI+M72MfPdVhM/o3axkzywqKZjjOyhe0=";
+    private static final Localidad localidad = new Localidad(3908, "ALDEA BRASILERA", 3101, null);
+    private static final Direccion inicio = new Direccion("Grupo8", 100, localidad);
+    private static final Direccion fin = new Direccion("No llegamos con la entrega", 100, localidad);
+    private static Tramo tramoAuto;
+    private static Tramo tramoPie;
+    private static TransportePublico transportePublico;
+    private static Tramo tramoTren1;
+    private static Tramo tramoTren2;
 
-    @BeforeEach
-    public void iniciarTramos() {
+    @BeforeAll
+    public static void iniciarTramos() {
         Auto auto = new Auto(null);
         Pie pie = new Pie();
-        this.transportePublico = crearTren();
-        this.tramoAuto = new TramoTransportePrivado(auto, inicio, fin, token);
-        this.tramoPie = new TramoTransportePrivado(pie, inicio, fin, token);
+        transportePublico = crearTren();
+        tramoAuto = new TramoTransportePrivado(auto, inicio, fin, token);
+        tramoPie = new TramoTransportePrivado(pie, inicio, fin, token);
         tramoTren1 = new TramoTransportePublico(transportePublico, transportePublico.getParadas().get(2), transportePublico.getParadas().get(4));
         tramoTren2 = new TramoTransportePublico(transportePublico, transportePublico.getParadas().get(6), transportePublico.getParadas().get(7));
     }
@@ -57,7 +58,7 @@ class TrayectoTest {
         Assertions.assertTrue(trayecto.getDistancia().valor > 0);
     }
 
-    private TransportePublico crearTren() {
+    private static TransportePublico crearTren() {
         TransportePublico tren = new Tren("Aguante Pablo");
         for (int i = 0; i <10; i++) {
             Parada parada = new Parada("parada "+i, tren, null, 123, 123, i);

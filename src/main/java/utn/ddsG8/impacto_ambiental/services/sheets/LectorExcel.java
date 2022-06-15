@@ -14,10 +14,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
-// TODO
-// Por ahora todas las celdas del archivo de excel tiene que tener formato texto, si no esto rompe.
-// Confirmar con los profesores en que formatos se utilizaran las celdas
 public class LectorExcel {
 
     public List<Medicion> obtenerDatosActividades(String path) throws IOException {
@@ -40,7 +36,7 @@ public class LectorExcel {
             medicion.setTipoConsumo(cellIterator.next().getStringCellValue());
             medicion.setValor(getValor(cellIterator.next()));
             medicion.setPeriocidad(cellIterator.next().getStringCellValue());
-            medicion.setPeriodoDeImputacion(cellIterator.next().getStringCellValue());
+            medicion.setPeriodoDeImputacion(getValor(cellIterator.next()));
 
             mediciones.add(medicion);
         }
@@ -49,8 +45,9 @@ public class LectorExcel {
         return mediciones;
     }
 
+    // solo verifica si es numerico, de ser asi lo transforma en un string.
+    // verificar si tiene que leer otro tipo de celdas
     private String getValor(Cell cell) {
-        // no toma en cuenta todos los tipos de celdas
         return cell.getCellType() == CellType.NUMERIC ? Double.toString(cell.getNumericCellValue()) : cell.getStringCellValue();
     }
 

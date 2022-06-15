@@ -38,7 +38,6 @@ public class Organizacion {
     public void cargarMediciones() throws IOException {
         LectorExcel lector = new LectorExcel();
         List<Medicion> mediciones = lector.obtenerDatosActividades(archivoDatosActividades);
-        //todo a donde van estas mediciones? por ahora a un atributo
     }
 
     public void confimarMiembros(){
@@ -69,9 +68,11 @@ public class Organizacion {
     public Direccion getDireccion() {
         return direccion;
     }
+
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
+
     public List<Sector> getSectores() {
         return sectores;
     }
