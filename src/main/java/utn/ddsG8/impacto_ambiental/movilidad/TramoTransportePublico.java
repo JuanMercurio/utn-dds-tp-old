@@ -17,7 +17,7 @@ public class TramoTransportePublico extends Tramo{
     }
 
     private Distancia calcularDistancia(Parada inicio, Parada fin) {
-        return new Distancia(inicio.distanciaAParada(fin), "KM");
+        return new Distancia(inicio.distanciaAParada(fin,this.transporte), "KM");
     }
 
 }

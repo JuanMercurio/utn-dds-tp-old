@@ -58,7 +58,8 @@ class TramoTest {
     private TransportePublico crearTren() {
         TransportePublico tren = new Tren("Subte 123");
         for (int i = 0; i <10; i++) {
-            Parada parada = new Parada("parada "+i, tren, null, 123, 123, i);
+            Parada parada = new Parada("parada "+i, null);
+            tren.agregarParada(parada,1,2,i);
         }
         return tren;
     }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Tren extends TransportePublico {
 
     public Tren(String nombre) {
+        super.nombre = nombre;
         this.paradas = new ArrayList<Parada>();
     }
 

@@ -9,23 +9,25 @@ public class Parada {
     private Parada anteriorParada;
     private Direccion direccion;
     private String nombre;
-    private TransportePublico tranportePublico;
+    // SOLUCIONADO: es necesario que guarde su transporte? si el transporte guarda
+    //private TransportePublico tranportePublico;
     private Distancia distanciaProximaParada;
     private Distancia distanciaAnteriorParada; //TODO por ahora no se usa esto, analizar si lo sacamos
 
-    public Parada(String nombre, TransportePublico transportePublico, Direccion direccion, float distanciaProxima, float distanciaAnterior, int i) {
+    public Parada(String nombre, Direccion direccion/*, float distanciaProxima,
+                  float distanciaAnterior, int i*/) {
         this.nombre = nombre;
-        this.tranportePublico = transportePublico;
+        //this.tranportePublico = transportePublico;
         this.direccion = direccion;
         // Analizar si la unidad de las distancia siempre sera KM y si deberia tener un parametro "unidad" el constructor
-        this.distanciaProximaParada = new Distancia(distanciaProxima, "KM");
-        this.distanciaAnteriorParada = new Distancia(distanciaAnterior, "KM");
-        transportePublico.agregarParada(this, distanciaProxima, distanciaAnterior, i);
+        //this.distanciaProximaParada = new Distancia(distanciaProxima, "KM");
+        //this.distanciaAnteriorParada = new Distancia(distanciaAnterior, "KM");
+        //transportePublico.agregarParada(this, distanciaProxima, distanciaAnterior, i);
     }
 
-    public float distanciaAParada(Parada paradaFinal) {
+    public float distanciaAParada(Parada paradaFinal, TransportePublico transporte) {
         float sum = 0;
-        for (Parada parada :this.tranportePublico.getParadas()) {
+        for (Parada parada :transporte.getParadas()) {
             sum += parada.distanciaProximaParada.valor ;
             if (parada == paradaFinal) break;
         }
