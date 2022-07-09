@@ -6,9 +6,11 @@ public class Auto extends VehiculoParticular {
 
     public Auto(Combustible combustible) {
         this.combustible = combustible;
+        // TODO: BUSCAR ..
     }
 
     @Override
     public void calcularHC() {
+
     }
 }

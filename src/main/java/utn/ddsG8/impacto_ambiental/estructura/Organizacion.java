@@ -19,6 +19,8 @@ public class Organizacion {
     private List<Trayecto> trayectos;
     private List<Medicion> mediciones;
 
+    // TODO: HC / CANT. DE MIEMBRO. agregar metodo.
+
     public Organizacion(String razonSocial, OrgTipo tipo, Clasificacion clasificacion,
                         Direccion direccion) {
         this.razonSocial         = razonSocial;

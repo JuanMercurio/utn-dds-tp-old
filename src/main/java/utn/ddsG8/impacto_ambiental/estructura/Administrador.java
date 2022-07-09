@@ -6,6 +6,7 @@ public class Administrador {
     private String usuario;
     private String contrasenia;
 
+
     public void CrearColectivo(String nombre){
         Colectivo unColectivo = new Colectivo(nombre);
 
@@ -26,4 +27,13 @@ public class Administrador {
         transportePublico.agregarParada(nuevaParada,distanciaProxima,distanciaAnterior,i);
     }
 
+
+    // TODO: LEVANTAR ARCHIVO O PONER FIJO CADA FE DE LA TABLA DE LA ENTREGA 2
+
+    public  void ModificarFactirEmision (CalcularHC calculador, String actividad, String tipoConsumo, double factorEmision){
+        //TODO : MODIFICA UNO.
+        // buscar en la lsita cual es
+        // modificar por el factor de emision nuevo.
+
+    }
 }
