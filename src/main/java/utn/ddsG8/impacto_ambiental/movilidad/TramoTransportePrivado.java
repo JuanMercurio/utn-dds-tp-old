@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.movilidad;
 
+import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.TransportePrivado;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
@@ -29,8 +30,9 @@ public class TramoTransportePrivado extends Tramo {
         }
     }
 
-    private void calcularHC() {
-        this.transporte.calcularHC();
+    public float calcularHC(CalcularHC calculador) {
+        return this.transporte.calcularHC(calculador,this.distancia.valor);
     }
+
 
 }

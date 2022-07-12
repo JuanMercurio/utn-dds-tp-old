@@ -1,14 +1,16 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes.publico;
 
+import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
+
 import java.util.ArrayList;
 
 public class Subte extends TransportePublico {
     public Subte(String nombre) {
-        super.nombre = nombre;
+        this.nombre = nombre;
         this.paradas = new ArrayList<>();
+        this.nombreFE = "Subte";
     }
 
-    @Override
-    public void calcularHC() {
-    }
+
+
 }

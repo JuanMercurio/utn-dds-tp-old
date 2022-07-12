@@ -6,10 +6,8 @@ public class Moto extends VehiculoParticular {
 
     public Moto(Combustible combustible) {
         this.combustible = combustible;
+        this.nombreFE = "Moto";
     }
 
-    @Override
-    public void calcularHC() {
 
-    }
 }

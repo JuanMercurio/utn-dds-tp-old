@@ -8,7 +8,5 @@ public class ServicioContratado extends TransportePrivado {
     }
 
     // Tal vez lo calcula igual que el auto, confirmar
-    @Override
-    public void calcularHC() {
-    }
+
 }

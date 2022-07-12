@@ -7,9 +7,9 @@ public class FactorEmision {
     private String TipoConsumo;
     private String unidad;
     // PARA TODOS LAS LOGISTICAS SON EL MISMO VALOR DE EMISION.
-    private double valorFactEmision;
+    private float valorFactEmision;
 
-    public FactorEmision(String actividad, String tipoConsumo, String unidad, double valorFactEmision) {
+    public FactorEmision(String actividad, String tipoConsumo, String unidad, float valorFactEmision) {
         this.actividad = actividad;
         TipoConsumo = tipoConsumo;
         this.unidad = unidad;
@@ -44,7 +44,7 @@ public class FactorEmision {
         return valorFactEmision;
     }
 
-    public void setValorFactEmision(double valorFactEmision) {
+    public void setValorFactEmision(float valorFactEmision) {
         this.valorFactEmision = valorFactEmision;
     }
 }

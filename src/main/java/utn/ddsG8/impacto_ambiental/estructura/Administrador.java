@@ -30,11 +30,11 @@ public class Administrador {
 
     // TODO: LEVANTAR ARCHIVO O PONER FIJO CADA FE DE LA TABLA DE LA ENTREGA 2
 
-    public  void ModificarFactirEmision (CalcularHC calculador, String actividad, String tipoConsumo, double factorEmision){
+    public  void ModificarFactirEmision (CalcularHC calculador, String actividad, String tipoConsumo, float factorEmision){
         //MODIFICA solo el FE de una actividad y tipo consumo existente.
         calculador.modificarFE(actividad,tipoConsumo,factorEmision);
     }
-    public void CargarFE(CalcularHC calculador,String actividad, String tipoConsumo, double factorEmision, String unidad){
+    public void CargarFE(CalcularHC calculador,String actividad, String tipoConsumo, float factorEmision, String unidad){
         FactorEmision fe = new FactorEmision(actividad,tipoConsumo,unidad,factorEmision);
         calculador.cargarFactorEmision(fe);
     }

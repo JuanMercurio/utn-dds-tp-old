@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes.publico;
 
+import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.Transporte;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 public abstract class TransportePublico implements Transporte {
     protected String nombre;
+    protected String nombreFE;
     protected List<Parada> paradas;
 
     public void agregarParada(Parada nueva, float distProxima, float distAnterior, int i) {
@@ -26,4 +28,19 @@ public abstract class TransportePublico implements Transporte {
     public List<Parada> getParadas() {
         return this.paradas;
     }
+
+    /* a checkear si esta bien, si a borrar.
+    public double CalcularDistancia (Parada paradaIncial, Parada paradaFinal){
+        return paradaIncial.distanciaAParada(paradaFinal,this);
+    }*/
+
+    public float calcularHC(CalcularHC calculador, float distancia) {
+        float fe;
+        fe = (float) calculador.buscarFactorEmision(this.nombreFE,"");
+        if (fe != -1){
+            return fe * distancia;
+        }
+        return -1;
+    }
+
 }

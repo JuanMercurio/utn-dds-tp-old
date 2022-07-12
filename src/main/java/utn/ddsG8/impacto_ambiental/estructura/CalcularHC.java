@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 // clase singleton. se instancia una sola vez.
 public class CalcularHC {
-    private double K;
+    private float K;
     private List<FactorEmision> factoresDeEmision;
 
     public CalcularHC(){
@@ -21,7 +21,7 @@ public class CalcularHC {
 
     }
 
-    public void modificarFE (String actividad, String tipoConsumo, double valorEmision){
+    public void modificarFE (String actividad, String tipoConsumo, float valorEmision){
         for (FactorEmision fe: factoresDeEmision) {
             if(fe.getActividad() == actividad && fe.getTipoConsumo() == tipoConsumo){
                 fe.setValorFactEmision(valorEmision);
@@ -32,7 +32,7 @@ public class CalcularHC {
     // si lo encuentra lo devuelve. si no devuelve -1.
     public double buscarFactorEmision ( String actividad, String tipoConsumo){
         for (FactorEmision fe: factoresDeEmision) {
-            if(fe.getActividad() == actividad && fe.getTipoConsumo() == tipoConsumo){
+            if(fe.getActividad().contains(actividad) && fe.getTipoConsumo().contains(tipoConsumo)){
                 return fe.getValorFactEmision();
             }
         }

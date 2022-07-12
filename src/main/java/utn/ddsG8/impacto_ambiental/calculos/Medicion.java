@@ -8,7 +8,7 @@ public class Medicion {
     private String periodoDeImputacion;
     private int anio;
     private int mes;
-    private double valorD;
+    private float valorD;
 
 
     public String getActividad() {
@@ -34,13 +34,19 @@ public class Medicion {
     }
 
     public void setValor(String valor) {
-        try{
-            this.valorD = Double.parseDouble(valor);
-
-        }catch (NumberFormatException ex) {
+        if ( this.getActividad().contains("Logística")){
             this.valorD = 0;
-            ex.printStackTrace();
         }
+        else{
+            try{
+                this.valorD = Float.parseFloat(valor);
+
+            }catch (NumberFormatException ex) {
+                this.valorD = 0;
+                ex.printStackTrace();
+            }
+        }
+
         this.valor = valor;
     }
 
@@ -110,7 +116,7 @@ public class Medicion {
         return valorD;
     }
 
-    public void setValorD(double valorD) {
+    public void setValorD(float valorD) {
         this.valorD = valorD;
     }
 }

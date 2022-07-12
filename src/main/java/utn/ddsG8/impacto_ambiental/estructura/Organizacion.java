@@ -89,4 +89,12 @@ public class Organizacion {
     public void setTrayectos(List<Trayecto> trayectos) {
         this.trayectos = trayectos;
     }
+
+    public float CalcularHC (CalcularHC calculador){
+        float hc = 0;
+        for (Trayecto trayecto: trayectos) {
+            hc+= trayecto.CalcularHCTrayecto(calculador);
+        }
+        return hc;
+    }
 }

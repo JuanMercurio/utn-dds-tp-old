@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.movilidad;
 
+import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.TransportePublico;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
@@ -20,4 +21,8 @@ public class TramoTransportePublico extends Tramo{
         return new Distancia(inicio.distanciaAParada(fin,this.transporte), "KM");
     }
 
+    @Override
+    public float calcularHC(CalcularHC calculador) {
+        return transporte.calcularHC(calculador,this.distancia.valor);
+    }
 }

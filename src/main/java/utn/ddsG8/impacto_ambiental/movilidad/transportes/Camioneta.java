@@ -6,10 +6,8 @@ public class Camioneta extends VehiculoParticular {
 
     public Camioneta(Combustible combustible) {
         this.combustible = combustible;
+        this.nombreFE="Camion";
     }
 
-    @Override
-    public void calcularHC() {
 
-    }
 }

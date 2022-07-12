@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.movilidad;
 
+import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
 import java.time.LocalDate;
@@ -11,5 +12,5 @@ public abstract class Tramo {
     public Distancia getDistancia() {
         return this.distancia;
     }
-
+    public abstract float calcularHC(CalcularHC calculador);
 }

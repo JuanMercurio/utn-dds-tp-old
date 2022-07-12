@@ -13,7 +13,7 @@ public class CalcularHuellaCarbono {
     @Test
     public void crearFeYBuscar () throws IOException {
         CalcularHC calcular = new CalcularHC();
-        FactorEmision fe = new FactorEmision("Combustion fija","Gas Natural","m3",2.44);
+       /* FactorEmision fe = new FactorEmision("Combustion fija","Gas Natural","m3",2.44);
         calcular.cargarFactorEmision(fe);
         fe = new FactorEmision("Combustion fija","Diesel","lt",3.44);
         calcular.cargarFactorEmision(fe);
@@ -47,6 +47,19 @@ public class CalcularHuellaCarbono {
         LectorExcel lector = new LectorExcel();
         List<Medicion> mediciones = lector.obtenerDatosActividades("src/main/resources/ejemploDA.xlsx");
         Assertions.assertTrue(calcular.CalcularFEActividades(mediciones) != 0);
+
+        fe = new FactorEmision("Camion","","",3.44);
+        calcular.cargarFactorEmision(fe);
+
+        fe = new FactorEmision("Auto","","",3.44);
+        calcular.cargarFactorEmision(fe);
+
+        fe = new FactorEmision("Moto","","",3.44);
+        calcular.cargarFactorEmision(fe);
+
+        fe = new FactorEmision("Colectivo","","",3.44);
+        calcular.cargarFactorEmision(fe);*/
+
 
     }
 

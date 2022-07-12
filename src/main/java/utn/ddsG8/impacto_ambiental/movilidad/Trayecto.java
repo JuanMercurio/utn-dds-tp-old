@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.movilidad;
 
+import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
 import utn.ddsG8.impacto_ambiental.estructura.Miembro;
 import utn.ddsG8.impacto_ambiental.estructura.Organizacion;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
@@ -58,5 +59,14 @@ public class Trayecto {
         return id;
     }
 
+    public float CalcularHCTrayecto(CalcularHC calculador){
+        float hc = 0;
+
+        for ( Tramo tramo: tramos) {
+            hc += tramo.calcularHC(calculador);
+        }
+        return hc;
+
+    }
 
 }
