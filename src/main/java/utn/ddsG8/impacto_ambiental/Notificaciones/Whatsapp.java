@@ -1,13 +1,20 @@
 package utn.ddsG8.impacto_ambiental.Notificaciones;
 
 public class Whatsapp extends Notificacion{
+    private String telefono;
+
+    public Whatsapp(String telefono) {
+        this.telefono = telefono;
+    }
+
     @Override
-    public void Enviar(Contacto contacto) {
+    public void Enviar() {
         // TODO
     }
 
     @Override
     public void run() {
-
+        System.out.println("Enviando whatsapp a"+this.telefono);
+        System.out.println("Ingrese a para saber mas. www.huelladecarbono.com.ar");
     }
 }

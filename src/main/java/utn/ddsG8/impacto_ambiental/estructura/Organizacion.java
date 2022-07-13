@@ -130,10 +130,20 @@ public class Organizacion {
     }
 
 
+    public void CrearContacto (String nombre, String email,String telefono){
+        Contacto c = new Contacto(email,telefono,nombre);
+        contactos.add(c);
+    }
+    public void agregarContacto(Contacto contacto){
+        contactos.add(contacto);
+    }
 
+    public List<Contacto> getContactos() {
+        return contactos;
+    }
 
     // todo funcion cron
     public void Cron (){
-        this.contactos.forEach(contacto -> contacto.getNotificaciones().forEach(notificacion -> notificacion.Enviar(contacto)));
+        this.contactos.forEach(contacto -> contacto.getNotificaciones().forEach(notificacion -> notificacion.Enviar()));
     }
 }

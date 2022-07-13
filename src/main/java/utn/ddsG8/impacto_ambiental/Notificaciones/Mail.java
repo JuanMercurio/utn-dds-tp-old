@@ -1,14 +1,32 @@
 package utn.ddsG8.impacto_ambiental.Notificaciones;
 
+import java.util.Date;
+
 public class Mail extends Notificacion{
-    @Override
-    public void Enviar(Contacto contacto) {
-        // TODO
-        System.out.println("ENVIANDOME MAIL");
+    private String mail;
+
+    public Mail(String mail) {
+        this.mail = mail;
     }
 
     @Override
+    public void Enviar() {
+        // TODO
+        System.out.println("Enviando whatsapp a"+this.mail);
+        System.out.println("ENVIANDOME MAIL");
+    }
+    /*public void EnviarNotificacion(){
+        for (:
+             ) {
+
+        }
+        t.scheduleAtFixedRate(,5,this.tiempoNotificacion);
+        t.schedule(wpp,5);
+        t.schedule(wpp,new Date(2022,7,13));
+    }*/
+    @Override
     public void run() {
-        Enviar(null);
+        Enviar();
+        System.out.println("Ingrese a para saber mas. www.huelladecarbono.com.ar");
     }
 }

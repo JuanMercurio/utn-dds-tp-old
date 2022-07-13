@@ -6,7 +6,9 @@ import utn.ddsG8.impacto_ambiental.Notificaciones.Contacto;
 public class TimerContacto {
     @Test
     public void probando() throws InterruptedException {
-        Contacto c = new Contacto();
+        Contacto c = new Contacto("rozenberg", "123456789","Jana");
+
+        c.wait(1000000);
         wait(1000000);
     }
 }
