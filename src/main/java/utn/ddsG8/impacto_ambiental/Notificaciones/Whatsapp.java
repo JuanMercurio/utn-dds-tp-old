@@ -5,4 +5,9 @@ public class Whatsapp extends Notificacion{
     public void Enviar(Contacto contacto) {
         // TODO
     }
+
+    @Override
+    public void run() {
+
+    }
 }
