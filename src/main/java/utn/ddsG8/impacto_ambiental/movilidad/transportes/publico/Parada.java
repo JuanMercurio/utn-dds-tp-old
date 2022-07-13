@@ -14,8 +14,8 @@ public class Parada {
     private Distancia distanciaProximaParada;
     private Distancia distanciaAnteriorParada; //TODO por ahora no se usa esto, analizar si lo sacamos
 
-    public Parada(String nombre, Direccion direccion/*, float distanciaProxima,
-                  float distanciaAnterior, int i*/) {
+    public Parada(String nombre, Direccion direccion/*, double distanciaProxima,
+                  double distanciaAnterior, int i*/) {
         this.nombre = nombre;
         //this.tranportePublico = transportePublico;
         this.direccion = direccion;
@@ -25,8 +25,8 @@ public class Parada {
         //transportePublico.agregarParada(this, distanciaProxima, distanciaAnterior, i);
     }
 
-    public float distanciaAParada(Parada paradaFinal, TransportePublico transporte) {
-        float sum = 0;
+    public double distanciaAParada(Parada paradaFinal, TransportePublico transporte) {
+        double sum = 0;
         for (Parada parada :transporte.getParadas()) {
             sum += parada.distanciaProximaParada.valor ;
             if (parada == paradaFinal) break;
@@ -38,11 +38,11 @@ public class Parada {
         return this.distanciaProximaParada;
     }
 
-    public void setDistanciaProximaParada(float distanciaProximaParada) {
+    public void setDistanciaProximaParada(double distanciaProximaParada) {
         this.distanciaProximaParada = new Distancia(distanciaProximaParada, "KM");
     }
 
-    public void setDistanciaAnteriorParada(float distanciaAnteriorParada) {
+    public void setDistanciaAnteriorParada(double distanciaAnteriorParada) {
         this.distanciaAnteriorParada = new Distancia(distanciaAnteriorParada, "KM");
     }
 

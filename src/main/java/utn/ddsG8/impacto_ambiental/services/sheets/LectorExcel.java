@@ -33,6 +33,7 @@ public class LectorExcel {
             Iterator<Cell> cellIterator = row.cellIterator();
             Medicion medicion = new Medicion();
             medicion.setActividad(cellIterator.next().getStringCellValue());
+            //TODO: HACER LA MEDICION DE LOGISTICA.
             medicion.setTipoConsumo(cellIterator.next().getStringCellValue());
             medicion.setValor(getValor(cellIterator.next()));
             medicion.setPeriocidad(cellIterator.next().getStringCellValue());

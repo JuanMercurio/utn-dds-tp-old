@@ -2,9 +2,9 @@ package utn.ddsG8.impacto_ambiental.movilidad;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
+import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
-import utn.ddsG8.impacto_ambiental.estructura.FactorEmision;
+import utn.ddsG8.impacto_ambiental.calculos.FE;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.Moto;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.Pie;
 import utn.ddsG8.impacto_ambiental.movilidad.transportes.combustibles.Combustible;
@@ -37,20 +37,20 @@ class TramoTest {
         Auto auto = new Auto(combustible);
         Tramo tramo = new TramoTransportePrivado(auto, inicioDireccion, finDireccion, token);
         CalcularHC calcular = new CalcularHC();
-        FactorEmision fe;
-        fe = new FactorEmision("Camion","","",3);
+        FE fe;
+        fe = new FE("Camion","","",3);
         calcular.cargarFactorEmision(fe);
 
-        fe = new FactorEmision("Auto","","",3);
+        fe = new FE("Auto","","",3);
         calcular.cargarFactorEmision(fe);
 
-        fe = new FactorEmision("Tren","","",3);
+        fe = new FE("Tren","","",3);
         calcular.cargarFactorEmision(fe);
 
-        fe = new FactorEmision("Colectivo","","",3);
+        fe = new FE("Colectivo","","",3);
         calcular.cargarFactorEmision(fe);
         System.out.println(tramo.calcularHC(calcular));
-        float hc = auto.calcularHC(calcular,tramo.getDistancia().valor);
+        double hc = auto.calcularHC(calcular,tramo.getDistancia().valor);
         System.out.println(hc);
         Assertions.assertTrue(hc> 0);
 
@@ -88,13 +88,13 @@ class TramoTest {
         Tramo tramo = new TramoTransportePublico(tren, tren.getParadas().get(0), tren.getParadas().get(5));
 
         CalcularHC calcular = new CalcularHC();
-        FactorEmision fe;
-        fe = new FactorEmision("Tren","","",3);
+        FE fe;
+        fe = new FE("Tren","","",3.99);
         calcular.cargarFactorEmision(fe);
 
         System.out.println(tramo.calcularHC(calcular));
 
-        float hc = tren.calcularHC(calcular,tramo.getDistancia().valor);
+        double hc = tren.calcularHC(calcular,tramo.getDistancia().valor);
         System.out.println(hc);
         Assertions.assertTrue(hc> 0);
     }

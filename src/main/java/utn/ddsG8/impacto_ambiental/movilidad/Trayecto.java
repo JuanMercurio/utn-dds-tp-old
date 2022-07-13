@@ -1,6 +1,6 @@
 package utn.ddsG8.impacto_ambiental.movilidad;
 
-import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
+import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.estructura.Miembro;
 import utn.ddsG8.impacto_ambiental.estructura.Organizacion;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
@@ -34,7 +34,7 @@ public class Trayecto {
     }
 
     private void setDistancia() {
-        float valor = (float) tramos.stream().mapToDouble(t -> t.getDistancia().valor) .sum();
+        double valor = (double) tramos.stream().mapToDouble(t -> t.getDistancia().valor) .sum();
         final String unidad = tramos.get(0).getDistancia().unidad;
         this.distancia = new Distancia(valor, unidad);
     }
@@ -59,11 +59,29 @@ public class Trayecto {
         return id;
     }
 
-    public float CalcularHCTrayecto(CalcularHC calculador){
-        float hc = 0;
+    public double CalcularHCTrayecto(CalcularHC calculador){
+        double hc = 0;
 
         for ( Tramo tramo: tramos) {
             hc += tramo.calcularHC(calculador);
+        }
+        return hc;
+
+    }
+    public double CalcularHCTrayectoMensual(CalcularHC calculador, int mes, int anio){
+        double hc = 0;
+
+        for ( Tramo tramo: tramos) {
+            hc += tramo.calcularHCMensual(calculador,mes,anio);
+        }
+        return hc;
+
+    }
+    public double CalcularHCTrayectoAnual(CalcularHC calculador, int anio){
+        double hc = 0;
+
+        for ( Tramo tramo: tramos) {
+            hc += tramo.calcularHCAnual(calculador,anio);
         }
         return hc;
 

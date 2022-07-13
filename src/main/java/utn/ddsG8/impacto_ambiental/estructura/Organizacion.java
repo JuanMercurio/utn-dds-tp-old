@@ -1,5 +1,7 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
+import utn.ddsG8.impacto_ambiental.Notificaciones.Contacto;
+import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.calculos.Medicion;
 import utn.ddsG8.impacto_ambiental.movilidad.Trayecto;
 import utn.ddsG8.impacto_ambiental.services.sheets.LectorExcel;
@@ -18,6 +20,7 @@ public class Organizacion {
     private String archivoDatosActividades;
     private List<Trayecto> trayectos;
     private List<Medicion> mediciones;
+    private List<Contacto> contactos;
 
     // TODO: HC / CANT. DE MIEMBRO. agregar metodo.
 
@@ -30,7 +33,9 @@ public class Organizacion {
         this.sectores            = new ArrayList<Sector>();
         this.potencialesMiembros = new ArrayList<SolicitudMiembro>();
         this.mediciones          = new ArrayList<Medicion>();
+        this.contactos = new ArrayList<>();
     }
+
 
 
     public List<SolicitudMiembro> getPotencialesMiembros() {
@@ -90,11 +95,45 @@ public class Organizacion {
         this.trayectos = trayectos;
     }
 
-    public float CalcularHC (CalcularHC calculador){
-        float hc = 0;
+    public double CalcularHC (CalcularHC calculador){
+        double hc = 0;
         for (Trayecto trayecto: trayectos) {
             hc+= trayecto.CalcularHCTrayecto(calculador);
         }
         return hc;
+    }
+    public double CalcularHCAnual (CalcularHC calculador, int anio){
+        double hc = 0;
+        for (Trayecto trayecto: trayectos) {
+            hc+= trayecto.CalcularHCTrayectoAnual(calculador,anio);
+        }
+        return hc + calculador.CalcularFEActividadesAnual(mediciones,anio);
+    }
+    public double CalcularHCMensual (CalcularHC calculador, int anio, int mes){
+        double hc = 0;
+        for (Trayecto trayecto: trayectos) {
+            hc+= trayecto.CalcularHCTrayectoMensual(calculador,mes,anio);
+        }
+        return hc + calculador.CalcularFEActividadesMensual(mediciones,mes,anio);
+    }
+
+    public double IndicadorHC_CANT (CalcularHC calculardor){
+        return CalcularHC(calculardor)*cantidadMiembros();
+    }
+    public int cantidadMiembros(){
+        int cant = 0;
+        for (Sector sector:  sectores) {
+            cant += sector.getMiembros().size();
+        }
+        //todo no contemplo que un empleado puede estar en dos sectores
+        return cant;
+    }
+
+
+
+
+    // todo funcion cron
+    public void Cron (){
+        this.contactos.forEach(contacto -> contacto.getNotificaciones().forEach(notificacion -> notificacion.Enviar(contacto)));
     }
 }

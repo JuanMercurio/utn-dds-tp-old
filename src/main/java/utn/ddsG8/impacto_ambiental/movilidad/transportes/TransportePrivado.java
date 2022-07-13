@@ -1,13 +1,12 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes;
 
-import utn.ddsG8.impacto_ambiental.estructura.CalcularHC;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
+import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 
 public abstract class TransportePrivado implements Transporte {
     protected String nombreFE;
-    public float calcularHC(CalcularHC calculador, float distancia) {
-        float fe;
-        fe = (float) calculador.buscarFactorEmision(this.nombreFE,"");
+    public double calcularHC(CalcularHC calculador, double distancia) {
+        double fe;
+        fe = (double) calculador.buscarFactorEmision(this.nombreFE,"");
         if (fe != -1){
             return fe * distancia;
         }

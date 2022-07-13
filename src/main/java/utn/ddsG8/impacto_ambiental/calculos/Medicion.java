@@ -8,7 +8,7 @@ public class Medicion {
     private String periodoDeImputacion;
     private int anio;
     private int mes;
-    private float valorD;
+    private double valorD;
 
 
     public String getActividad() {
@@ -34,18 +34,28 @@ public class Medicion {
     }
 
     public void setValor(String valor) {
-        if ( this.getActividad().contains("Logística")){
+
+       //System.out.println(valor);
+       /* if ( this.getActividad().contains("Logística")){
+
             this.valorD = 0;
         }
-        else{
+        else{*/
             try{
-                this.valorD = Float.parseFloat(valor);
+                //Double. Float.parseFloat(valor)
+                //System.out.println("1-COMIENZO A PARSEAR");
+                this.valorD = Double.parseDouble(valor);
+                        //(double) Float.parseFloat(valor);
 
-            }catch (NumberFormatException ex) {
+                //System.out.println("2-PUDO: "+this.valorD);
+
+            }catch (Exception ex) {
+                //System.out.println("CATCH");
                 this.valorD = 0;
-                ex.printStackTrace();
+                //ex.printStackTrace();
+                //System.out.println(ex);
             }
-        }
+        //}
 
         this.valor = valor;
     }
@@ -63,7 +73,7 @@ public class Medicion {
     }
 
     public void setPeriodoDeImputacion(String periodoDeImputacion) {
-        if(periodoDeImputacion.length() == 4){
+        if(this.periocidad.contains("Anual")){
             try{
                 this.anio = Integer.parseInt(periodoDeImputacion);
                 // INDICA QUE ESA MEDICION. ES ANUAL Y NO POR MES.
@@ -116,7 +126,7 @@ public class Medicion {
         return valorD;
     }
 
-    public void setValorD(float valorD) {
+    public void setValorD(double valorD) {
         this.valorD = valorD;
     }
 }
