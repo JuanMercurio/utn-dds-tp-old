@@ -21,6 +21,7 @@ public class Provincia {
     public void AgregarAgenteSectorial(AgenteSectorial ags){
         agenteSectorialesP.add(ags);
     }
+
     public double CalcularHCProvincia (List<Organizacion> organizaciones, CalcularHC calculador){
         double hc = 0;
         for (Organizacion org: organizaciones) {

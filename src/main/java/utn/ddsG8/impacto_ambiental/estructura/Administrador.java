@@ -18,11 +18,12 @@ import java.util.Timer;
 public class Administrador {
     private String usuario;
     private String contrasenia;
+    // TODO, explicar porque. XQ L ADMIN LAS TIENE QUE TENER.
     private List<Organizacion> organizaciones;
     private CalcularHC calculador;
     public Timer time;
     private long periodoEnvioNotificaciones;
-    private List<Notificacion> notificaciones;
+    //private List<Notificacion> notificaciones;
     //private QuartzScheduler probando;
 
 
@@ -30,7 +31,7 @@ public class Administrador {
         this.organizaciones = new ArrayList<>();
         this.time = new Timer();
         this.calculador = new CalcularHC();
-        this.notificaciones = new ArrayList<>();
+        //this.notificaciones = new ArrayList<>();
         this.periodoEnvioNotificaciones = 1000;
         /*Whatsapp wpp = new Whatsap;
         notificaciones.add(wpp);
@@ -40,7 +41,7 @@ public class Administrador {
     public void EnviarNotificaciones(){
         for (Organizacion org: organizaciones) {
             for (Contacto contacto: org.getContactos()) {
-                for (Notificacion not: notificaciones) {
+                for (Notificacion not: contacto.getNotificaciones()) {
                     this.time.scheduleAtFixedRate(not,5,this.periodoEnvioNotificaciones);
                     this.time.schedule(not,this.periodoEnvioNotificaciones);
                     //this.time.schedule(not,new Date(2022,7,13));
@@ -73,16 +74,19 @@ public class Administrador {
         this.calculador = calculador;
     }
 
-    public void CrearColectivo(String nombre){
+    public Colectivo CrearColectivo(String nombre){
         Colectivo unColectivo = new Colectivo(nombre);
+        return unColectivo;
 
     }
-    public void CrearSubte(String nombre){
+    public Subte CrearSubte(String nombre){
         Subte unColectivo = new Subte(nombre);
+        return unColectivo;
 
     }
-    public void CrearTren(String nombre){
+    public Tren CrearTren(String nombre){
         Tren unColectivo = new Tren(nombre);
+        return unColectivo;
 
     }
     //String nombre, TransportePublico transportePublico, Direccion direccion, double distanciaProxima, double distanciaAnterior, int i

@@ -16,6 +16,22 @@ public class Miembro {
     private List<Sector> sectores;
     private List<Trayecto> trayectos;
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public Miembro(String nombre, String apellido, TipoDoc tipoDoc, String documento) {
         this.nombre = nombre;
         this.apellido = apellido;

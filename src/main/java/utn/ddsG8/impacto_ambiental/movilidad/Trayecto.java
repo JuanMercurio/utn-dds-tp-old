@@ -29,6 +29,14 @@ public class Trayecto {
         return distancia;
     }
 
+    public List<Miembro> getMiembros() {
+        return miembros;
+    }
+
+    public void setMiembros(List<Miembro> miembros) {
+        this.miembros = miembros;
+    }
+
     public Distancia getDistanciaDeTramo(int index) {
         return tramos.get(index).getDistancia();
     }

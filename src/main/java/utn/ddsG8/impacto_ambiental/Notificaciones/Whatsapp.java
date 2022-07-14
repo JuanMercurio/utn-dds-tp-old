@@ -15,6 +15,6 @@ public class Whatsapp extends Notificacion{
     @Override
     public void run() {
         System.out.println("Enviando whatsapp a"+this.telefono);
-        System.out.println("Ingrese a para saber mas. www.huelladecarbono.com.ar");
+        System.out.println("Wpp:Ingrese a para saber mas. www.huelladecarbono.com.ar");
     }
 }

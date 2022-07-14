@@ -100,7 +100,23 @@ public class Organizacion {
         for (Trayecto trayecto: trayectos) {
             hc+= trayecto.CalcularHCTrayecto(calculador);
         }
-        return hc;
+        return hc + calculador.CalcularFEActividadesTOTAL(mediciones);
+    }
+    //TODO:
+    public void HuellaCarbonoMiembros(CalcularHC calculador){
+        int cant = 0;
+        for (Sector sector:  sectores) {
+            for (Miembro miembro: sector.getMiembros()) {
+                double hc = 0;
+                for (Trayecto trayecto: this.trayectos) {
+                    if(trayecto.getMiembros().contains(miembro)){
+                        hc+= trayecto.CalcularHCTrayecto(calculador);
+                    }
+
+                }
+                System.out.println("El miembro "+miembro.getNombre()+ ". Su HC es "+hc);
+            }
+        }
     }
     public double CalcularHCAnual (CalcularHC calculador, int anio){
         double hc = 0;
@@ -129,7 +145,6 @@ public class Organizacion {
         return cant;
     }
 
-
     public void CrearContacto (String nombre, String email,String telefono){
         Contacto c = new Contacto(email,telefono,nombre);
         contactos.add(c);
@@ -142,8 +157,8 @@ public class Organizacion {
         return contactos;
     }
 
-    // todo funcion cron
-    public void Cron (){
+    // todo funcion cron no usada
+   /* public void Cron (){
         this.contactos.forEach(contacto -> contacto.getNotificaciones().forEach(notificacion -> notificacion.Enviar()));
-    }
+    }*/
 }

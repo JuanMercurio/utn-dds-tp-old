@@ -12,9 +12,9 @@ public class Contacto {
     private String telefono;
     private String nombre;
     private List<Notificacion> notificaciones;
-    private Timer t;
-    private long tiempoNotificacion;
-    private List<LocalDate> fechas;
+    //private Timer t;
+    //private long tiempoNotificacion;
+    //private List<LocalDate> fechas;
 
     public Contacto(String emaill, String telefonoo, String nombree) {
         this.email = emaill;
@@ -25,7 +25,7 @@ public class Contacto {
         Mail mail = new Mail(this.email);
         notificaciones.add(wpp);
         notificaciones.add(mail);
-        tiempoNotificacion = 1000;
+       // tiempoNotificacion = 1000;
 
 
         /* t = new Timer();

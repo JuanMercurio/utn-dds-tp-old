@@ -18,6 +18,7 @@ public class Municipio {
         this.provincia = provincia;
         agenteSectorialesM = new ArrayList<>();
     }
+
     public void AgregarAgenteSectorial(AgenteSectorial ags){
         agenteSectorialesM.add(ags);
     }

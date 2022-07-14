@@ -49,16 +49,18 @@ public class impactoAmbiental {
         fe = new FE("Logística de productos y residuos","","",3.44);
         calcular.cargarFactorEmision(fe);
 
-        fe = new FE("Camion","","",3.44);
+        fe = new FE("Camion",3.44);
         calcular.cargarFactorEmision(fe);
 
-        fe = new FE("Auto","","",3.44);
+        fe = new FE("Auto",3.44);
         calcular.cargarFactorEmision(fe);
 
-        fe = new FE("Moto","","",3.44);
+        fe = new FE("Moto",3.44);
         calcular.cargarFactorEmision(fe);
 
         fe = new FE("Colectivo","","",3.44);
+        calcular.cargarFactorEmision(fe);
+        fe = new FE("Pie","","",0);
         calcular.cargarFactorEmision(fe);
         return calcular;
     }

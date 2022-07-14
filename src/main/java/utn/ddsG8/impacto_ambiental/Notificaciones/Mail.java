@@ -26,7 +26,7 @@ public class Mail extends Notificacion{
     }*/
     @Override
     public void run() {
-        Enviar();
-        System.out.println("Ingrese a para saber mas. www.huelladecarbono.com.ar");
+        //Enviar();
+        System.out.println("MAIL:Ingrese a para saber mas. www.huelladecarbono.com.ar"+this.mail);
     }
 }

@@ -227,6 +227,67 @@ public class CalcularHC {
 
 
     }
+    public double CalcularFEActividadesTOTAL(List<Medicion> mediciones){
+
+        double medicionAcum = 0;
+        double fe;
+        Boolean comenzoLogistica = true;
+        Logistica logistica = new Logistica();
+        int cont = 0;
+        for (Medicion med: mediciones) {
+
+                if( med.getActividad().contains("Logística")){
+                    //System.out.println("ENTRO 1");
+                    if(!comenzoLogistica ){
+                        comenzoLogistica = true;
+                        logistica = new Logistica();
+                    }
+
+                    if (med.getTipoConsumo().contains("Distancia")){
+                        //System.out.println("ENTRO 2");
+                        //System.out.println("Distancia: "+med.getValorD());
+                        logistica.setDistancia(med.getValorD());
+                        cont++;
+                    }
+                    else if(med.getTipoConsumo().contains("Peso")){
+                        //System.out.println("ENTRO 3");
+                        //System.out.println("Peso: "+med.getValorD());
+                        logistica.setPesoTotal(med.getValorD());
+                        cont++;
+                    }
+                    else if(med.getTipoConsumo().contains("Medio Transporte")){
+                        //System.out.println("ENTRO 4");
+                        logistica.setMedioTransporte(med.getValor());
+                        cont++;
+                    }
+                    else if(med.getTipoConsumo().contains("Producto Transportado")){
+                        //System.out.println("ENTRO 5");
+                        logistica.setProductoTransportado(med.getValor());
+                        cont++;
+                    }
+                    if( cont == 4){
+                        comenzoLogistica = false;
+                        cont = 0;
+
+                        fe = buscarFactorEmisionTransporte(logistica.getMedioTransporte());
+                        if( fe != -1 ) {
+                            // System.out.println("ENTRO");
+                            //System.out.println(fe*logistica.getDistancia()*logistica.getPesoTotal()*K);
+                            medicionAcum += fe*logistica.getDistancia()*logistica.getPesoTotal()*K;
+                        }
+                    }
+                }
+                else{
+                    //System.out.println(calcularFeMedicion(med));
+                    medicionAcum += calcularFeMedicion(med);
+                }
+
+
+        }
+        return medicionAcum;
+
+
+    }
     public double buscarFactorEmisionTransporte(String nombre){
         for (FE act:factoresDeEmision){
             if(act.getNombre().contains(nombre)){

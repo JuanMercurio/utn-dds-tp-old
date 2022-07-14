@@ -39,6 +39,12 @@ public class FE  {
         this.unidad = unidad;
         this.valor = valorFE;
     }
+    public FE(String actividad,  double valorFE) {
+        this.nombre = actividad;
+        this.unidad = unidad;
+        this.valor = valorFE;
+    }
+
 
 
 
