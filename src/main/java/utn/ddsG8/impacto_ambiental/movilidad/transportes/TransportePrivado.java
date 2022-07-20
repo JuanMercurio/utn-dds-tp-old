@@ -4,9 +4,9 @@ import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 
 public abstract class TransportePrivado implements Transporte {
     protected String nombreFE;
-    public double calcularHC(CalcularHC calculador, double distancia) {
+    public double calcularHC( double distancia) {
         double fe;
-        fe = (double) calculador.buscarFactorEmision(this.nombreFE,"");
+        fe = (double) CalcularHC.getInstancia().buscarFactorEmision(this.nombreFE,"");
         if (fe != -1){
             return fe * distancia;
         }

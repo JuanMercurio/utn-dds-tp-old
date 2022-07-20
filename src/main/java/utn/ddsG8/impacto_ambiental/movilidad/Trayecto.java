@@ -67,11 +67,11 @@ public class Trayecto {
         return id;
     }
 
-    public double CalcularHCTrayecto(CalcularHC calculador){
+    public double CalcularHCTrayecto(){
         double hc = 0;
 
         for ( Tramo tramo: tramos) {
-            hc += tramo.calcularHC(calculador);
+            hc += tramo.calcularHC();
         }
         return hc;
 
@@ -80,7 +80,7 @@ public class Trayecto {
         double hc = 0;
 
         for ( Tramo tramo: tramos) {
-            hc += tramo.calcularHCMensual(calculador,mes,anio);
+            hc += tramo.calcularHCMensual(mes,anio);
         }
         return hc;
 
@@ -89,7 +89,7 @@ public class Trayecto {
         double hc = 0;
 
         for ( Tramo tramo: tramos) {
-            hc += tramo.calcularHCAnual(calculador,anio);
+            hc += tramo.calcularHCAnual(anio);
         }
         return hc;
 

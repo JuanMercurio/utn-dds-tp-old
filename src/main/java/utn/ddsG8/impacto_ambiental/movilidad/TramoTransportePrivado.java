@@ -9,7 +9,6 @@ import utn.ddsG8.impacto_ambiental.services.distancia.DistanciaServicio;
 import java.io.IOException;
 
 public class TramoTransportePrivado extends Tramo {
-    private TransportePrivado transporte;
     private Direccion inicio;
     private Direccion fin;
 
@@ -30,19 +29,18 @@ public class TramoTransportePrivado extends Tramo {
         }
     }
 
-    public Double calcularHC(CalcularHC calculador) {
-        //if(fecha.getMonth())
-        return this.transporte.calcularHC(calculador,this.distancia.valor);
+    public Double calcularHC() {
+        return this.transporte.calcularHC(this.distancia.valor);
     }
-    public Double calcularHCAnual(CalcularHC calculador, int anio) {
+    public Double calcularHCAnual(int anio) {
         if( this.fecha.getYear() == anio){
-            return this.transporte.calcularHC(calculador,this.distancia.valor);
+            return this.transporte.calcularHC(this.distancia.valor);
         }
         return 0.0;
     }
-    public Double calcularHCMensual(CalcularHC calculador, int anio, int mes) {
+    public Double calcularHCMensual(int anio, int mes) {
         if(this.fecha.getMonth().getValue() == mes && this.fecha.getYear() == anio){
-            return this.transporte.calcularHC(calculador,this.distancia.valor);
+            return this.transporte.calcularHC(this.distancia.valor);
         }
         return 0.0;
 

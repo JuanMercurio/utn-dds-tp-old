@@ -1,18 +1,28 @@
 package utn.ddsG8.impacto_ambiental.calculos;
 
-import utn.ddsG8.impacto_ambiental.estructura.Organizacion;
 
 import java.util.ArrayList;
 import java.util.List;
-// clase singleton. se instancia una sola vez.
+
+// SINGLETON
+
 public class CalcularHC {
+    public static CalcularHC instancia = null;
     private double K;
     private List<FE> factoresDeEmision;
 
-    public CalcularHC(){
-        factoresDeEmision = new ArrayList<>();
+    public CalcularHC() {
+    factoresDeEmision = new ArrayList<>();
         this.K = 2;
     }
+
+    public static CalcularHC getInstancia() {
+        if (instancia == null) {
+            instancia = new CalcularHC();
+        }
+        return instancia;
+    }
+
     // TODO: CALCULAR HUELAL DE CARBONO DEL EXCEL
     // TODO: CALCULAR HUELLAD E CARBONO DE LOGISTICA.
     // DE DONDE SALE EL fe?

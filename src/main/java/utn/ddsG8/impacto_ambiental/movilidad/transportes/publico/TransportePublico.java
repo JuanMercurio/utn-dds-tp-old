@@ -33,9 +33,10 @@ public abstract class TransportePublico implements Transporte {
         return paradaIncial.distanciaAParada(paradaFinal,this);
     }*/
 
-    public double calcularHC(CalcularHC calculador, double distancia) {
+    @Override
+    public double calcularHC(double distancia) {
         double fe;
-        fe = (double) calculador.buscarFactorEmision(this.nombreFE,"");
+        fe = (double) CalcularHC.getInstancia().buscarFactorEmision(this.nombreFE,"");
         if (fe != -1){
             return fe * distancia;
         }

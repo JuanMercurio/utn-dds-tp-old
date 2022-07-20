@@ -22,12 +22,12 @@ public class Municipio {
     public void AgregarAgenteSectorial(AgenteSectorial ags){
         agenteSectorialesM.add(ags);
     }
-    public double CalcularHCMunicipio (List<Organizacion> organizaciones, CalcularHC calculador){
+    public double CalcularHCMunicipio (List<Organizacion> organizaciones){
         double hc = 0;
         for (Organizacion org: organizaciones) {
 
             if(org.getDireccion().getLocalidad().municipio.nombre == this.nombre){
-                hc+= org.CalcularHC(calculador);
+                hc+= org.CalcularHC();
             }
             //
         }

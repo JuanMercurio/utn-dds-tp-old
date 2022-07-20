@@ -36,21 +36,19 @@ class TramoTest {
         Combustible combustible = new Nafta();
         Auto auto = new Auto(combustible);
         Tramo tramo = new TramoTransportePrivado(auto, inicioDireccion, finDireccion, token);
-        CalcularHC calcular = new CalcularHC();
         FE fe;
+
         fe = new FE("Camion","","",3);
-        calcular.cargarFactorEmision(fe);
-
+        CalcularHC.getInstancia().cargarFactorEmision(fe);
         fe = new FE("Auto","","",3);
-        calcular.cargarFactorEmision(fe);
-
+        CalcularHC.getInstancia().cargarFactorEmision(fe);
         fe = new FE("Tren","","",3);
-        calcular.cargarFactorEmision(fe);
-
+        CalcularHC.getInstancia().cargarFactorEmision(fe);
         fe = new FE("Colectivo","","",3);
-        calcular.cargarFactorEmision(fe);
-        System.out.println(tramo.calcularHC(calcular));
-        double hc = auto.calcularHC(calcular,tramo.getDistancia().valor);
+        CalcularHC.getInstancia().cargarFactorEmision(fe);
+
+        System.out.println(tramo.calcularHC());
+        double hc = auto.calcularHC(tramo.getDistancia().valor);
         System.out.println(hc);
         Assertions.assertTrue(hc> 0);
 
@@ -81,23 +79,23 @@ class TramoTest {
         Distancia distanciaTramo= tramo.getDistancia();
         Assertions.assertTrue(distanciaTramo.valor > 0);
     }
+
     @Test
     public void TrenHuellaCarbono()
     {
         TransportePublico tren = crearTren();
         Tramo tramo = new TramoTransportePublico(tren, tren.getParadas().get(0), tren.getParadas().get(5));
 
-        CalcularHC calcular = new CalcularHC();
-        FE fe;
-        fe = new FE("Tren","","",3.99);
-        calcular.cargarFactorEmision(fe);
+        FE fe = new FE("Tren","","",3.99);
+        CalcularHC.getInstancia().cargarFactorEmision(fe);
 
-        System.out.println(tramo.calcularHC(calcular));
+        System.out.println(tramo.calcularHC());
 
-        double hc = tren.calcularHC(calcular,tramo.getDistancia().valor);
+        double hc = tren.calcularHC(tramo.getDistancia().valor);
         System.out.println(hc);
         Assertions.assertTrue(hc> 0);
     }
+
     private TransportePublico crearTren() {
         TransportePublico tren = new Tren("Subte 123");
         for (int i = 0; i <10; i++) {

@@ -22,12 +22,12 @@ public class Provincia {
         agenteSectorialesP.add(ags);
     }
 
-    public double CalcularHCProvincia (List<Organizacion> organizaciones, CalcularHC calculador){
+    public double CalcularHCProvincia (List<Organizacion> organizaciones){
         double hc = 0;
         for (Organizacion org: organizaciones) {
 
             if(org.getDireccion().getLocalidad().municipio.provincia.nombre == this.nombre){
-                hc+= org.CalcularHC(calculador);
+                hc+= org.CalcularHC();
             }
             //
         }

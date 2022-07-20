@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
 import utn.ddsG8.impacto_ambiental.Notificaciones.Contacto;
 import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.calculos.Medicion;
@@ -8,7 +9,9 @@ import utn.ddsG8.impacto_ambiental.services.sheets.LectorExcel;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Organizacion {
     private String razonSocial;
@@ -37,6 +40,16 @@ public class Organizacion {
     }
 
 
+    public int cantidadMiembros(){
+        // se puede buscar una forma mas elegante como ya tener un set de miembros, pero eso seria informacion redundante...
+        Set<Miembro> miembros = new HashSet<Miembro>();
+        sectores.forEach(sector -> miembros.addAll(sector.getMiembros()));
+        return miembros.size();
+    }
+
+    public void setArchivoDatosActividades(String archivoDatosActividades) {
+        this.archivoDatosActividades = archivoDatosActividades;
+    }
 
     public List<SolicitudMiembro> getPotencialesMiembros() {
         return potencialesMiembros;
@@ -95,13 +108,14 @@ public class Organizacion {
         this.trayectos = trayectos;
     }
 
-    public double CalcularHC (CalcularHC calculador){
+    public double CalcularHC (){
         double hc = 0;
         for (Trayecto trayecto: trayectos) {
-            hc+= trayecto.CalcularHCTrayecto(calculador);
+            hc+= trayecto.CalcularHCTrayecto();
         }
-        return hc + calculador.CalcularFEActividadesTOTAL(mediciones);
+        return hc + CalcularHC.getInstancia().CalcularFEActividadesTOTAL(mediciones);
     }
+
     //TODO:
     public void HuellaCarbonoMiembros(CalcularHC calculador){
         int cant = 0;
@@ -110,7 +124,7 @@ public class Organizacion {
                 double hc = 0;
                 for (Trayecto trayecto: this.trayectos) {
                     if(trayecto.getMiembros().contains(miembro)){
-                        hc+= trayecto.CalcularHCTrayecto(calculador);
+                        hc+= trayecto.CalcularHCTrayecto();
                     }
 
                 }
@@ -118,6 +132,7 @@ public class Organizacion {
             }
         }
     }
+
     public double CalcularHCAnual (CalcularHC calculador, int anio){
         double hc = 0;
         for (Trayecto trayecto: trayectos) {
@@ -125,6 +140,7 @@ public class Organizacion {
         }
         return hc + calculador.CalcularFEActividadesAnual(mediciones,anio);
     }
+
     public double CalcularHCMensual (CalcularHC calculador, int anio, int mes){
         double hc = 0;
         for (Trayecto trayecto: trayectos) {
@@ -134,15 +150,7 @@ public class Organizacion {
     }
 
     public double IndicadorHC_CANT (CalcularHC calculardor){
-        return CalcularHC(calculardor)*cantidadMiembros();
-    }
-    public int cantidadMiembros(){
-        int cant = 0;
-        for (Sector sector:  sectores) {
-            cant += sector.getMiembros().size();
-        }
-        //todo no contemplo que un empleado puede estar en dos sectores
-        return cant;
+        return CalcularHC()*cantidadMiembros();
     }
 
     public void CrearContacto (String nombre, String email,String telefono){
@@ -156,9 +164,4 @@ public class Organizacion {
     public List<Contacto> getContactos() {
         return contactos;
     }
-
-    // todo funcion cron no usada
-   /* public void Cron (){
-        this.contactos.forEach(contacto -> contacto.getNotificaciones().forEach(notificacion -> notificacion.Enviar()));
-    }*/
 }
