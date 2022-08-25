@@ -5,15 +5,23 @@ import utn.ddsG8.impacto_ambiental.estructura.Miembro;
 import utn.ddsG8.impacto_ambiental.estructura.Organizacion;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+@Entity
+@Table
 public class Trayecto {
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Miembro> miembros;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Organizacion> organizaciones;
+    @Transient
     private List<Tramo> tramos;
+    @Transient
     private Distancia distancia;
+    @Id
     private int id;
 
     public Trayecto() {

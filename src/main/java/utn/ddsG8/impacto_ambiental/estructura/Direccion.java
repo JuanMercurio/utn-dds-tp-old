@@ -1,11 +1,21 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
+import utn.ddsG8.impacto_ambiental.persistence.Persistable;
 import utn.ddsG8.impacto_ambiental.services.distancia.Localidad;
 
-public class Direccion {
+import javax.persistence.*;
+
+@Entity
+@Table
+public class Direccion extends Persistable {
+    @Transient
     private String nombre;               // esta de mas?
+    @Column
     private String calle;
+    @Column
     private Integer altura;
+    @ManyToOne
+    @JoinColumn(name = "localidad", referencedColumnName = "id")
     private Localidad localidad;
 
     public Direccion(String calle, Integer altura, Localidad localidad) {

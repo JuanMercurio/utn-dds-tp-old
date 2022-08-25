@@ -1,20 +1,41 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
-import utn.ddsG8.impacto_ambiental.movilidad.Tramo;
 import utn.ddsG8.impacto_ambiental.movilidad.Trayecto;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.Transporte;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
+import utn.ddsG8.impacto_ambiental.persistence.Persistable;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Miembro {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "miembro")
+public class Miembro extends Persistable {
+    @Column(name = "nombre")
     private String nombre;
+    @Column(name = "apellido")
     private String apellido;
+    @Enumerated(EnumType.STRING)
     private TipoDoc tipoDoc;
+    @Column(name = "documento")
     private String documento;
+
+    // TODO: todas los atributos bidireccionales se podrian sacar ahora. Porque estamos usando hibernate. Analizar
+    @ManyToMany(mappedBy = "miembros", fetch = FetchType.LAZY)
     private List<Sector> sectores;
+
+    @ManyToMany(mappedBy = "miembros", fetch = FetchType.LAZY)
     private List<Trayecto> trayectos;
+
+    public Miembro(String nombre, String apellido, TipoDoc tipoDoc, String documento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.tipoDoc = tipoDoc;
+        this.documento = documento;
+        this.sectores = new ArrayList<Sector>();
+        this.trayectos = new ArrayList<Trayecto>();
+    }
 
     public String getNombre() {
         return nombre;
@@ -32,14 +53,6 @@ public class Miembro {
         this.apellido = apellido;
     }
 
-    public Miembro(String nombre, String apellido, TipoDoc tipoDoc, String documento) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.tipoDoc = tipoDoc;
-        this.documento = documento;
-        this.sectores = new ArrayList<Sector>();
-        this.trayectos = new ArrayList<Trayecto>();
-    }
 
     public void agregarSector(Sector sector) {
         this.sectores.add(sector);

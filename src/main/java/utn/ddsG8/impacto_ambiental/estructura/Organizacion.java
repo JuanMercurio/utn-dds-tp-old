@@ -5,24 +5,39 @@ import utn.ddsG8.impacto_ambiental.Notificaciones.Contacto;
 import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.calculos.Medicion;
 import utn.ddsG8.impacto_ambiental.movilidad.Trayecto;
+import utn.ddsG8.impacto_ambiental.persistence.Persistable;
 import utn.ddsG8.impacto_ambiental.services.sheets.LectorExcel;
 
+import javax.persistence.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Organizacion {
+@Entity
+@Table
+public class Organizacion extends Persistable {
+    @Column
     private String razonSocial;
+    @Transient
     private OrgTipo tipo;
+    @Transient
     private Clasificacion clasificacion;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "direccion", referencedColumnName = "id")
     private Direccion direccion;
+    @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Sector> sectores;
+    @Transient
     private List<SolicitudMiembro> potencialesMiembros;
+    @Transient
     private String archivoDatosActividades;
+    @ManyToMany(mappedBy = "organizaciones")
     private List<Trayecto> trayectos;
+    @Transient
     private List<Medicion> mediciones;
+    @Transient
     private List<Contacto> contactos;
 
     // TODO: HC / CANT. DE MIEMBRO. agregar metodo.
