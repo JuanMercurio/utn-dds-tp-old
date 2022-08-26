@@ -49,6 +49,7 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-to-slf4j -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -61,10 +62,11 @@
             <version>1.7.36</version>
         </dependency>
         <dependency>
-        <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-         <version>1.7.36</version>
-     </dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
@@ -72,6 +74,7 @@
             <version>2.3.2</version>
         </dependency>
 
+        <!-- Persistencia -->
         <dependency>
             <groupId> org.uqbar-project </groupId>
             <artifactId> jpa-java8-extras </artifactId>
@@ -88,6 +91,13 @@
             <version> 2.2.8 </version>
         </dependency>
 
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <!-- Necesario para correr en consola (mvn test) -->

@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
+import lombok.Getter;
 import utn.ddsG8.impacto_ambiental.persistence.Persistable;
 
 import javax.persistence.*;
@@ -12,10 +13,11 @@ public class Sector extends Persistable {
     @Column(name = "nombre")
     private String nombre;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Getter
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Miembro> miembros;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organizacion", referencedColumnName = "id")
     private Organizacion organizacion;
 
@@ -23,10 +25,6 @@ public class Sector extends Persistable {
         this.nombre = nombre;
         this.organizacion = org;
         this.miembros = new ArrayList<Miembro>();
-    }
-
-    public List<Miembro> getMiembros() {
-        return miembros;
     }
 
     public void agregarMiembro(Miembro miembro) {

@@ -3,6 +3,7 @@ package utn.ddsG8.impacto_ambiental.movilidad;
 import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.estructura.Miembro;
 import utn.ddsG8.impacto_ambiental.estructura.Organizacion;
+import utn.ddsG8.impacto_ambiental.persistence.Persistable;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
 import javax.persistence.*;
@@ -12,24 +13,20 @@ import java.util.stream.Stream;
 
 @Entity
 @Table
-public class Trayecto {
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+public class Trayecto extends Persistable {
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Miembro> miembros;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Organizacion> organizaciones;
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL) // TODO: confimar que esto funcione asi nomas
     private List<Tramo> tramos;
-    @Transient
+    @Transient // TODO: para persistir esto talvez convenga transformarlo en un int
     private Distancia distancia;
-    @Id
-    private int id;
 
     public Trayecto() {
         this.miembros = new ArrayList<Miembro>() ;
         this.organizaciones = new ArrayList<Organizacion>() ;
         this.tramos = new ArrayList<Tramo>() ;
-        // TODO: id?
-        // TODO: falta una forma de agregar las organizaciones que forman parte del trayecto
     }
 
     public Distancia getDistancia() {
@@ -69,10 +66,6 @@ public class Trayecto {
 
     public void agregarMiembro(Miembro miembro) {
         miembros.add(miembro);
-    }
-
-    public int getId() {
-        return id;
     }
 
     public double CalcularHCTrayecto(){

@@ -1,6 +1,7 @@
 package utn.ddsG8.impacto_ambiental.estructura;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
+import lombok.Getter;
+import lombok.Setter;
 import utn.ddsG8.impacto_ambiental.Notificaciones.Contacto;
 import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.calculos.Medicion;
@@ -24,19 +25,29 @@ public class Organizacion extends Persistable {
     private OrgTipo tipo;
     @Transient
     private Clasificacion clasificacion;
+
+    @Setter
+    @Getter
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "direccion", referencedColumnName = "id")
     private Direccion direccion;
+
     @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Sector> sectores;
+
     @Transient
     private List<SolicitudMiembro> potencialesMiembros;
     @Transient
     private String archivoDatosActividades;
+
+    @Getter
     @ManyToMany(mappedBy = "organizaciones")
     private List<Trayecto> trayectos;
+
     @Transient
     private List<Medicion> mediciones;
+
+    @Getter
     @Transient
     private List<Contacto> contactos;
 
@@ -100,23 +111,13 @@ public class Organizacion extends Persistable {
         sectores.add(sector);
     }
 
-    public Direccion getDireccion() {
-        return direccion;
-    }
 
-    public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
-    }
 
     public List<Sector> getSectores() {
         return sectores;
     }
     public void setSectores(List<Sector> sectores) {
         this.sectores = sectores;
-    }
-
-    public List<Trayecto> getTrayectos() {
-        return trayectos;
     }
 
     public void setTrayectos(List<Trayecto> trayectos) {
@@ -131,7 +132,6 @@ public class Organizacion extends Persistable {
         return hc + CalcularHC.getInstancia().CalcularFEActividadesTOTAL(mediciones);
     }
 
-    //TODO:
     public void HuellaCarbonoMiembros(CalcularHC calculador){
         int cant = 0;
         for (Sector sector:  sectores) {
@@ -141,9 +141,7 @@ public class Organizacion extends Persistable {
                     if(trayecto.getMiembros().contains(miembro)){
                         hc+= trayecto.CalcularHCTrayecto();
                     }
-
                 }
-                System.out.println("El miembro "+miembro.getNombre()+ ". Su HC es "+hc);
             }
         }
     }
@@ -174,9 +172,5 @@ public class Organizacion extends Persistable {
     }
     public void agregarContacto(Contacto contacto){
         contactos.add(contacto);
-    }
-
-    public List<Contacto> getContactos() {
-        return contactos;
     }
 }
