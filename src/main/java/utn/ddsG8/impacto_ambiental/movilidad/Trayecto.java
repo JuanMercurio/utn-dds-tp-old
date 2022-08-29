@@ -7,6 +7,7 @@ import utn.ddsG8.impacto_ambiental.persistence.Persistable;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -18,7 +19,7 @@ public class Trayecto extends Persistable {
     private List<Miembro> miembros;
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Organizacion> organizaciones;
-    @OneToMany(cascade = CascadeType.ALL) // TODO: confimar que esto funcione asi nomas
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Tramo> tramos;
     @Transient // TODO: para persistir esto talvez convenga transformarlo en un int
     private Distancia distancia;

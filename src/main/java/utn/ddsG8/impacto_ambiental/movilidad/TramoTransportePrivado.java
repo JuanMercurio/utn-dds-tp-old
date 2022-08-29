@@ -6,10 +6,20 @@ import utn.ddsG8.impacto_ambiental.movilidad.transportes.TransportePrivado;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 import utn.ddsG8.impacto_ambiental.services.distancia.DistanciaServicio;
 
+import javax.persistence.*;
 import java.io.IOException;
 
+@Entity
+@PrimaryKeyJoinColumn(name = "id")
+@Table(name = "tramo_privado")
 public class TramoTransportePrivado extends Tramo {
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "direccion_inicio", referencedColumnName = "id")
     private Direccion inicio;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "direccion_fin", referencedColumnName = "id")
     private Direccion fin;
 
     public TramoTransportePrivado(TransportePrivado transportePrivado, Direccion inicio, Direccion fin, String token) {

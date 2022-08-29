@@ -8,17 +8,15 @@ import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-// TODO: Tramo es abstracta asi que hay que ver que estrategia usamos para persistir los dos tipos de tramo
-//       Single table tiene bastante pinta para esta vez
-
 @Entity
-@Table
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "tramo")
 public abstract class Tramo extends Persistable {
     @Transient
     protected LocalDate fecha;
 
     @Getter
-    @Transient
+    @Transient // TODO: Ver si conviene usar un float/double
     protected Distancia distancia;
 
     @Transient // TODO: Decidir que tipo de estrategia de herencia para persistir el transporte

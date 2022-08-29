@@ -1,17 +1,33 @@
 package utn.ddsG8.impacto_ambiental.movilidad.transportes.publico;
 
 import utn.ddsG8.impacto_ambiental.estructura.Direccion;
+import utn.ddsG8.impacto_ambiental.persistence.Persistable;
 import utn.ddsG8.impacto_ambiental.services.distancia.Distancia;
 
-public class Parada {
+import javax.persistence.*;
 
+@Entity
+@Table
+public class Parada extends Persistable {
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parada_proxima", referencedColumnName = "id")
     private Parada proximaParada;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parada_anterior", referencedColumnName = "id")
     private Parada anteriorParada;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "direccion", referencedColumnName = "id")
     private Direccion direccion;
+
+    @Column(name = "nombre")
     private String nombre;
-    // SOLUCIONADO: es necesario que guarde su transporte? si el transporte guarda
-    //private TransportePublico tranportePublico;
+
+    @Transient
     private Distancia distanciaProximaParada;
+    @Transient
     private Distancia distanciaAnteriorParada; //TODO por ahora no se usa esto, analizar si lo sacamos
 
     public Parada(String nombre, Direccion direccion/*, double distanciaProxima,
