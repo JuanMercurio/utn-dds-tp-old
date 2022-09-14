@@ -15,7 +15,7 @@ public class Provincia {
     @Column(name = "nombre")
     public String nombre;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne //(cascade = CascadeType.ALL)
     @JoinColumn(name = "pais", referencedColumnName = "id")
     public Pais pais;
 
@@ -28,6 +28,7 @@ public class Provincia {
         this.pais = pais;
         agenteSectorialesP = new ArrayList<>();
     }
+
     public void AgregarAgenteSectorial(AgenteSectorial ags){
         agenteSectorialesP.add(ags);
     }

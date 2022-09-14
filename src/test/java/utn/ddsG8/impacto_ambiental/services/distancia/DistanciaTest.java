@@ -74,7 +74,7 @@ public class DistanciaTest {
     @Test
     public void retornaLocalidades() throws IOException {
         DistanciaServicio api = DistanciaServicio.getInstancia();
-        List<Localidad> localidades = api.localidades(token, 100);
+        List<Localidad> localidades = api.localidades(token, 1);
         System.out.println();
         System.out.println("Imprime localidades y municipios obtenidos");
         System.out.println();

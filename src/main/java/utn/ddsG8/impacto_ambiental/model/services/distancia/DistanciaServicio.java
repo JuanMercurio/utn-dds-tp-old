@@ -78,9 +78,9 @@ public class DistanciaServicio {
         return responseLocalidad.body();
     }
 
-    public List<Localidad> localidades(String token, int offset, int provincia) {
+    public List<Localidad> localidades(String token, int offset, int municipio) {
         DistanciaAPI distanciaAPI = this.retrofit.create(DistanciaAPI.class);
-        Call<List<Localidad>> requestLocalidad = distanciaAPI.localidades(token, offset, provincia);
+        Call<List<Localidad>> requestLocalidad = distanciaAPI.localidades(token, offset, municipio);
         Response<List<Localidad>> responseLocalidad = null;
         try {
             responseLocalidad = requestLocalidad.execute();
