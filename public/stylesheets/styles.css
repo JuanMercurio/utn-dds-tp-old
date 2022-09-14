@@ -3,17 +3,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-
-body {
-  background-image: url("./images/Fondo.png");
-  background-size: cover;
-}
-
-nav {
-  background-image: url("./images/NavBar.png");
-  background-size: cover;
-}
-
 .container {
   height: 100vh;
   display: flex;
