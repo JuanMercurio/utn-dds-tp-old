@@ -1,13 +1,23 @@
 package utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico;
 
+import utn.ddsG8.impacto_ambiental.db.Persistable;
 import utn.ddsG8.impacto_ambiental.model.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Transporte;
 
+import javax.persistence.*;
 import java.util.List;
 
-public abstract class TransportePublico implements Transporte {
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "transporte_publico")
+public abstract class TransportePublico extends Persistable implements Transporte {
+
+    @Column
     protected String nombre;
+    @Column
     protected String nombreFE;
+
+    @Transient //TODO
     protected List<Parada> paradas;
 
     public void agregarParada(Parada nueva, double distProxima, double distAnterior, int i) {

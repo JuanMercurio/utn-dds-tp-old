@@ -6,7 +6,6 @@ import utn.ddsG8.impacto_ambiental.model.services.distancia.Distancia;
 import utn.ddsG8.impacto_ambiental.model.services.distancia.DistanciaServicio;
 
 import javax.persistence.*;
-import java.io.IOException;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
@@ -20,6 +19,8 @@ public class TramoTransportePrivado extends Tramo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "direccion_fin", referencedColumnName = "id")
     private Direccion fin;
+
+    private TransportePrivado transportePrivado;
 
     public TramoTransportePrivado(TransportePrivado transportePrivado, Direccion inicio, Direccion fin, String token) {
         this.transporte = transportePrivado;

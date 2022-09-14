@@ -19,7 +19,8 @@ public abstract class Tramo extends Persistable {
     @Transient // TODO: Ver si conviene usar un float/double
     protected Distancia distancia;
 
-    @Transient // TODO: Decidir que tipo de estrategia de herencia para persistir el transporte
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "transporte", referencedColumnName = "id")
     protected Transporte transporte;
 
     public Double calcularHC() {

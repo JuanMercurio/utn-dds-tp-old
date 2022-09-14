@@ -1,8 +1,9 @@
 package persistence;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utn.ddsG8.impacto_ambiental.db.EntityManagerHelper;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Auto;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Bicicleta;
 import utn.ddsG8.impacto_ambiental.model.services.distancia.*;
 
 import java.util.ArrayList;
@@ -16,8 +17,8 @@ public class EntityManagerTest {
     private static List<Localidad> localidades;
 
 
-    @BeforeAll
-    public static void getLocations() {
+    public void getLocations() {
+        // TODO: Este test es muy lento, hay que usar mockito
         paises = DistanciaServicio.getInstancia().paises(token, 1);
         provincias = DistanciaServicio.getInstancia().provincias(token, 1);
         municipios = new ArrayList<Municipio>();
@@ -26,18 +27,17 @@ public class EntityManagerTest {
             List municipiosProvicia = DistanciaServicio.getInstancia().municipios(token, 1, p.id);
             municipios.addAll(municipiosProvicia);
         }
-//        municipios = DistanciaServicio.getInstancia().municipios(token, 1);
         for (Municipio m : municipios) {
             List localidadesMunicipio = DistanciaServicio.getInstancia().localidades(token, 1, m.id);
             localidades.addAll(localidadesMunicipio);
         }
-//        localidades = DistanciaServicio.getInstancia().localidades(token, 1);
     }
 
 
     @Test
     public void persistirLocations() {
 
+        getLocations();
         EntityManagerHelper.beginTransaction();
         paises.forEach(p -> EntityManagerHelper.getEntityManager().persist(p));
         EntityManagerHelper.commit();
@@ -49,6 +49,17 @@ public class EntityManagerTest {
         EntityManagerHelper.commit();
         EntityManagerHelper.beginTransaction();
         localidades.forEach(l -> EntityManagerHelper.getEntityManager().persist(l));
+        EntityManagerHelper.commit();
+    }
+
+    @Test
+    public void movilidad() {
+        Auto auto = new Auto(null);
+        Bicicleta bici = new  Bicicleta();
+
+        EntityManagerHelper.beginTransaction();
+        EntityManagerHelper.getEntityManager().persist(auto);
+        EntityManagerHelper.getEntityManager().persist(bici);
         EntityManagerHelper.commit();
     }
 }

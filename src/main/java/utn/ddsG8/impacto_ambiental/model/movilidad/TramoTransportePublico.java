@@ -10,9 +10,11 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "id")
 @Table(name = "tramo_publico")
 public class TramoTransportePublico extends Tramo{
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parada_inicio", referencedColumnName = "id")
     private Parada inicio;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parada_fin", referencedColumnName = "id")
     private Parada fin;
