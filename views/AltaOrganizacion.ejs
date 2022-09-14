@@ -35,28 +35,33 @@
       </div>
     </div>
     <div>
-      <label class="form-label">Sectores de la organizacion</label>
-      <select class="form-select mb-2" aria-label="Default select example">
-        <option selected>Seleccione la cantidad de sectores de la organización</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select>
-    </div>
-    <div>
       <label class="form-label">Direccion de la organizacion</label>
       <input type="text" class="form-control mb-2" placeholder="Ingrese la direccion de la organizacion" />
     </div>
 
+    <div class="alta-paradas-table">
+      <label class="form-label">Sectores de la organizacion</label>
+      <div class="alta-paradas-control">
+          <div class="form-group alta-numero-parada">
+              <label class="alta-form-group-name" for="numeroParada">
+                  #
+              </label>
+              <input type="number" class="form-control" id="numeroParada" value="1" readonly>
+          </div>
+          <div class="form-group">
+              <label class="alta-form-group-name">
+                  Nombre del sector
+              </label>
+              <input type="text" class="form-control" id="nombreParada">
+          </div>
+          <button class="agregar-parada-button" id="agregarParadaButton" type="button">
+              <i class="fa-solid fa-plus"></i>
+          </button>
+      </div>
+  </div>
+
     <div class="d-flex justify-content-end mt-3">
-      <button type="button" class="btn btn-success" onclick="alert('Confirmar alta de organizacion')">Siguiente</button>
+      <button type="button" class="btn btn-success" onclick="alert('Confirmar alta de organizacion')">Confirmar alta</button>
     </div>
   </form>
 </div>
