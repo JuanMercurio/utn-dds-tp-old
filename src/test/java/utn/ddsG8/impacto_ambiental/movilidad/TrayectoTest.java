@@ -2,17 +2,21 @@ package utn.ddsG8.impacto_ambiental.movilidad;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
-import utn.ddsG8.impacto_ambiental.calculos.FE;
-import utn.ddsG8.impacto_ambiental.estructura.Direccion;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.Auto;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.Pie;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Parada;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.TransportePublico;
-import utn.ddsG8.impacto_ambiental.movilidad.transportes.publico.Tren;
-import utn.ddsG8.impacto_ambiental.services.distancia.*;
+import utn.ddsG8.impacto_ambiental.model.calculos.CalcularHC;
+import utn.ddsG8.impacto_ambiental.model.calculos.FE;
+import utn.ddsG8.impacto_ambiental.model.estructura.Direccion;
+import utn.ddsG8.impacto_ambiental.model.movilidad.Tramo;
+import utn.ddsG8.impacto_ambiental.model.movilidad.TramoTransportePrivado;
+import utn.ddsG8.impacto_ambiental.model.movilidad.TramoTransportePublico;
+import utn.ddsG8.impacto_ambiental.model.movilidad.Trayecto;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Auto;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Pie;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.Parada;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.TransportePublico;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.Tren;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.Distancia;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.Localidad;
 
 
 class TrayectoTest {

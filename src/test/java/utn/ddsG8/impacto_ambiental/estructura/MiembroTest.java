@@ -2,16 +2,17 @@ package utn.ddsG8.impacto_ambiental.estructura;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utn.ddsG8.impacto_ambiental.services.distancia.Localidad;
-import utn.ddsG8.impacto_ambiental.services.distancia.Municipio;
-import utn.ddsG8.impacto_ambiental.services.distancia.Provincia;
-import utn.ddsG8.impacto_ambiental.services.distancia.Pais;
+import utn.ddsG8.impacto_ambiental.model.estructura.*;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.Localidad;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.Municipio;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.Provincia;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.Pais;
 import java.io.IOException;
 
 class MiembroTest {
 
     private Miembro unMiembro = new Miembro("Matias","Carasi", TipoDoc.DNI, "42998217");
-    private Pais unPais = new Pais();
+    private Pais unPais = new Pais(1, "pais");
     private Provincia unaProvincia = new Provincia(9, "Buenos Aires", unPais);
     private Municipio unMunicipio = new Municipio(2, "General Pueyrredon", unaProvincia);
     private Localidad unaLocalidad = new Localidad(1,"Mar del Plata",3546, unMunicipio);

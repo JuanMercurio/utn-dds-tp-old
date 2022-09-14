@@ -1,12 +1,11 @@
 package utn.ddsG8.impacto_ambiental.CalculoHC;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utn.ddsG8.impacto_ambiental.calculos.Medicion;
-import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
-import utn.ddsG8.impacto_ambiental.calculos.FE;
-import utn.ddsG8.impacto_ambiental.services.sheets.LectorExcel;
+import utn.ddsG8.impacto_ambiental.model.calculos.Medicion;
+import utn.ddsG8.impacto_ambiental.model.calculos.CalcularHC;
+import utn.ddsG8.impacto_ambiental.model.calculos.FE;
+import utn.ddsG8.impacto_ambiental.model.services.sheets.LectorExcel;
 
-import java.io.Console;
 import java.io.IOException;
 import java.util.List;
 

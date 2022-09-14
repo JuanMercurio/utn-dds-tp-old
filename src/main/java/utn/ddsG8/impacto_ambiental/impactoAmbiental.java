@@ -1,19 +1,15 @@
 package utn.ddsG8.impacto_ambiental;
 
-import utn.ddsG8.impacto_ambiental.Notificaciones.Contacto;
-import utn.ddsG8.impacto_ambiental.Notificaciones.Whatsapp;
-import utn.ddsG8.impacto_ambiental.calculos.CalcularHC;
-import utn.ddsG8.impacto_ambiental.calculos.FE;
-import utn.ddsG8.impacto_ambiental.calculos.Medicion;
-import utn.ddsG8.impacto_ambiental.estructura.*;
-import utn.ddsG8.impacto_ambiental.services.distancia.*;
-import utn.ddsG8.impacto_ambiental.services.distancia.Pais;
-import utn.ddsG8.impacto_ambiental.services.distancia.Provincia;
-import utn.ddsG8.impacto_ambiental.services.sheets.LectorExcel;
+import utn.ddsG8.impacto_ambiental.model.Notificaciones.Contacto;
+import utn.ddsG8.impacto_ambiental.model.calculos.CalcularHC;
+import utn.ddsG8.impacto_ambiental.model.calculos.FE;
+import utn.ddsG8.impacto_ambiental.model.estructura.*;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.*;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.Pais;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.Provincia;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Timer;
 
 public class impactoAmbiental {
     private static final String token = "Bearer E8iN6xBPXQsUI+M72MfPdVhM/o3axkzywqKZjjOyhe0=";
@@ -75,7 +71,7 @@ public class impactoAmbiental {
 
 
         Miembro unMiembro = new Miembro("Matias","Carasi", TipoDoc.DNI, "42998217");
-        Pais unPais = new Pais();
+        Pais unPais = new Pais(1, "Pais");
         Provincia unaProvincia = new Provincia(9, "Buenos Aires", unPais);
         Municipio unMunicipio = new Municipio(2, "General Pueyrredon", unaProvincia);
         Localidad unaLocalidad = new Localidad(1,"Mar del Plata",3546, unMunicipio);

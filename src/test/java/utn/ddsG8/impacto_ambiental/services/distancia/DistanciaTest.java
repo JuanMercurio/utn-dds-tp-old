@@ -2,6 +2,7 @@ package utn.ddsG8.impacto_ambiental.services.distancia;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import utn.ddsG8.impacto_ambiental.model.services.distancia.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,8 +38,8 @@ public class DistanciaTest {
         System.out.println();
         System.out.println("Imprime provincias recibidas");
         System.out.println();
-        System.out.format("%-10S%-20s\n", "ID", "Provincia");
-        provincias.forEach(p -> System.out.format("%-10S%-20s\n", p.id, p.nombre));
+        System.out.format("%-10S%-20s%-30s\n", "ID", "Provincia", "Pais-id");
+        provincias.forEach(p -> System.out.format("%-10S%-20s%-30s\n", p.id, p.nombre, p.pais.id));
         System.out.println();
         Assertions.assertTrue(provincias.size() > 0);
     }
