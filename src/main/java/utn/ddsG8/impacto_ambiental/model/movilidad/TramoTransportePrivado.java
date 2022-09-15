@@ -8,8 +8,7 @@ import utn.ddsG8.impacto_ambiental.model.services.distancia.DistanciaServicio;
 import javax.persistence.*;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
-@Table(name = "tramo_privado")
+@DiscriminatorValue("tramo_privado")
 public class TramoTransportePrivado extends Tramo {
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -19,8 +18,6 @@ public class TramoTransportePrivado extends Tramo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "direccion_fin", referencedColumnName = "id")
     private Direccion fin;
-
-    private TransportePrivado transportePrivado;
 
     public TramoTransportePrivado(TransportePrivado transportePrivado, Direccion inicio, Direccion fin, String token) {
         this.transporte = transportePrivado;

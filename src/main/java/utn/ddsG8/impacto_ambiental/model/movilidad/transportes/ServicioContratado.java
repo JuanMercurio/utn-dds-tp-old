@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.model.movilidad.transportes;
 
+// todo Persistir
 public class ServicioContratado extends TransportePrivado {
     private String nombre;
 

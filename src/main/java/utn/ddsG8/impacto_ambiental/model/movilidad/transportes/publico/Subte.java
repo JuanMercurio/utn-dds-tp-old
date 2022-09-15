@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-@DiscriminatorValue("Subte")
+@DiscriminatorValue("subte")
 public class Subte extends TransportePublico {
     public Subte(String nombre) {
         this.nombre = nombre;

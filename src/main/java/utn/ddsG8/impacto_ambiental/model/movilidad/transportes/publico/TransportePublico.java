@@ -8,16 +8,17 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@DiscriminatorValue("publico")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "transporte_publico")
-public abstract class TransportePublico extends Persistable implements Transporte {
+@DiscriminatorColumn(name = "tipo_publico")
+public abstract class TransportePublico extends  Transporte {
 
-    @Column
+    @Column(name = "nombre")
     protected String nombre;
-    @Column
-    protected String nombreFE;
 
-    @Transient //TODO
+    // esta forma es fea. Lo mejor es tener el transporte en la parada directamente
+    @OneToMany
+    @JoinColumn(name = "transporte", referencedColumnName = "id")
     protected List<Parada> paradas;
 
     public void agregarParada(Parada nueva, double distProxima, double distAnterior, int i) {

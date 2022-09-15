@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("Auto")
+@DiscriminatorValue("auto")
 public class Auto extends VehiculoParticular {
 
     public Auto(Combustible combustible) {

@@ -1,6 +1,8 @@
 package utn.ddsG8.impacto_ambiental.model.movilidad;
 
 import lombok.Getter;
+import utn.ddsG8.impacto_ambiental.db.converters.DistanciaConverter;
+import utn.ddsG8.impacto_ambiental.db.converters.LocalTimeAttributeConverter;
 import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Transporte;
 import utn.ddsG8.impacto_ambiental.db.Persistable;
 import utn.ddsG8.impacto_ambiental.model.services.distancia.Distancia;
@@ -9,17 +11,21 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "tramo")
+@DiscriminatorColumn(name = "tipo_tramo")
 public abstract class Tramo extends Persistable {
-    @Transient
+
+    @Column(name = "fecha")
+    @Convert(converter = LocalTimeAttributeConverter.class)
     protected LocalDate fecha;
 
     @Getter
-    @Transient // TODO: Ver si conviene usar un float/double
+    @Column(name = "distancia")
+    @Convert(converter = DistanciaConverter.class)
     protected Distancia distancia;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "transporte", referencedColumnName = "id")
     protected Transporte transporte;
 

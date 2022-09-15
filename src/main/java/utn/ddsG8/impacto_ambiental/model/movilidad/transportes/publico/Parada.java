@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico;
 
+import utn.ddsG8.impacto_ambiental.db.converters.DistanciaConverter;
 import utn.ddsG8.impacto_ambiental.model.estructura.Direccion;
 import utn.ddsG8.impacto_ambiental.db.Persistable;
 import utn.ddsG8.impacto_ambiental.model.services.distancia.Distancia;
@@ -7,7 +8,7 @@ import utn.ddsG8.impacto_ambiental.model.services.distancia.Distancia;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "parada")
 public class Parada extends Persistable {
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -25,9 +26,12 @@ public class Parada extends Persistable {
     @Column(name = "nombre")
     private String nombre;
 
-    @Transient
+    @Column(name = "distancia_proxima_parada")
+    @Convert(converter = DistanciaConverter.class)
     private Distancia distanciaProximaParada;
-    @Transient
+
+    @Column(name = "distancia_anterior_parada")
+    @Convert(converter = DistanciaConverter.class)
     private Distancia distanciaAnteriorParada; //TODO por ahora no se usa esto, analizar si lo sacamos
 
     public Parada(String nombre, Direccion direccion/*, double distanciaProxima,

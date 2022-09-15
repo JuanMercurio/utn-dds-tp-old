@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.model.movilidad;
 
+import utn.ddsG8.impacto_ambiental.db.converters.DistanciaConverter;
 import utn.ddsG8.impacto_ambiental.model.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.model.estructura.Miembro;
 import utn.ddsG8.impacto_ambiental.model.estructura.Organizacion;
@@ -12,15 +13,20 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Entity
-@Table
+@Table(name = "trayecto")
 public class Trayecto extends Persistable {
+
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Miembro> miembros;
+
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Organizacion> organizaciones;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Tramo> tramos;
-    @Transient // TODO: para persistir esto talvez convenga transformarlo en un int
+
+    @Column(name = "distancia")
+    @Convert(converter = DistanciaConverter.class)
     private Distancia distancia;
 
     public Trayecto() {

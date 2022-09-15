@@ -1,9 +1,12 @@
 package persistence;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utn.ddsG8.impacto_ambiental.db.EntityManagerHelper;
 import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Auto;
 import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Bicicleta;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.Colectivo;
+import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.Subte;
 import utn.ddsG8.impacto_ambiental.model.services.distancia.*;
 
 import java.util.ArrayList;
@@ -55,11 +58,16 @@ public class EntityManagerTest {
     @Test
     public void movilidad() {
         Auto auto = new Auto(null);
-        Bicicleta bici = new  Bicicleta();
+        Subte subte = new Subte(null);
+        Colectivo colectivo = new Colectivo(null);
 
         EntityManagerHelper.beginTransaction();
+
         EntityManagerHelper.getEntityManager().persist(auto);
-        EntityManagerHelper.getEntityManager().persist(bici);
+        EntityManagerHelper.getEntityManager().persist(subte);
+        EntityManagerHelper.getEntityManager().persist(colectivo);
+
         EntityManagerHelper.commit();
+
     }
 }
