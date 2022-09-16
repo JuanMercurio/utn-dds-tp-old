@@ -17,12 +17,24 @@ import java.util.stream.Stream;
 public class Trayecto extends Persistable {
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "trayecto_miembro",
+            joinColumns = @JoinColumn(name = "trayecto_id"),
+            inverseJoinColumns = @JoinColumn(name = "miembro_id")
+    )
     private List<Miembro> miembros;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "trayecto_org",
+            joinColumns = @JoinColumn(name = "trayecto_id"),
+            inverseJoinColumns = @JoinColumn(name = "org_id")
+    )
     private List<Organizacion> organizaciones;
 
+    // es la forma fea de hacer un one-to-many unidireccional
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "trayecto", referencedColumnName = "id")
     private List<Tramo> tramos;
 
     @Column(name = "distancia")

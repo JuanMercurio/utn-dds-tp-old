@@ -10,13 +10,20 @@ import java.util.List;
 @Entity
 @Table(name = "sector")
 public class Sector extends Persistable {
+
     @Column(name = "nombre")
     private String nombre;
 
     @Getter
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "sector_miembro",
+            joinColumns = @JoinColumn(name = "sector_id"),
+            inverseJoinColumns = @JoinColumn(name = "miembro_id")
+    )
     private List<Miembro> miembros;
 
+    @Getter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organizacion", referencedColumnName = "id")
     private Organizacion organizacion;
@@ -29,9 +36,5 @@ public class Sector extends Persistable {
 
     public void agregarMiembro(Miembro miembro) {
         miembros.add(miembro);
-    }
-
-    public Organizacion getOrganizacion() {
-        return this.organizacion = organizacion;
     }
 }

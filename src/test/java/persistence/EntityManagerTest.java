@@ -1,14 +1,14 @@
 package persistence;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utn.ddsG8.impacto_ambiental.db.EntityManagerHelper;
+import utn.ddsG8.impacto_ambiental.model.estructura.*;
 import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Auto;
-import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.Bicicleta;
 import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.Colectivo;
 import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.Subte;
 import utn.ddsG8.impacto_ambiental.model.services.distancia.*;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class EntityManagerTest {
     }
 
     @Test
-    public void movilidad() {
+    public void persistirMovilidad() {
         Auto auto = new Auto(null);
         Subte subte = new Subte(null);
         Colectivo colectivo = new Colectivo(null);
@@ -70,4 +70,31 @@ public class EntityManagerTest {
         EntityManagerHelper.commit();
 
     }
+
+    @Test
+    public void persistirEstructura() {
+
+        Direccion direccion = new Direccion("ejemplo_calle", new Integer(123) , null);
+        Organizacion org = new Organizacion(
+                "ejemplo razonSocial",
+                OrgTipo.Empresa,
+                Clasificacion.Empresa_del_Sector_Primario,
+                direccion);
+        Sector s = new Sector("soy un sector", org);
+
+        Miembro m1 = new Miembro( "aprobame",  "pablo", TipoDoc.DNI, "12341234");
+        Miembro m2 = new Miembro( "aprobame",  "pablo", TipoDoc.DNI, "12341234");
+
+        m1.unirseAOrg(org, s);
+
+        org.aceptarTodosLosMiembros();
+
+        m2.unirseAOrg(org, s);
+
+        EntityManagerHelper.beginTransaction();
+        EntityManagerHelper.getEntityManager().persist(org);
+        EntityManagerHelper.commit();
+
+    }
+
 }

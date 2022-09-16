@@ -14,18 +14,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "miembro")
 public class Miembro extends Persistable {
+
     @Setter
     @Getter
     @Column(name = "nombre")
     private String nombre;
+
     @Column(name = "apellido")
     private String apellido;
+
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_doc")
     private TipoDoc tipoDoc;
+
     @Column(name = "documento")
     private String documento;
 
-    // TODO: todas los atributos bidireccionales se podrian sacar ahora. Porque estamos usando hibernate. Analizar
     @ManyToMany(mappedBy = "miembros", fetch = FetchType.LAZY)
     private List<Sector> sectores;
 

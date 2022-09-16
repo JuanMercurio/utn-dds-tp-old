@@ -1,13 +1,29 @@
 package utn.ddsG8.impacto_ambiental.model.Notificaciones;
 
+import utn.ddsG8.impacto_ambiental.db.Persistable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Contacto {
-    // email, telefono, nombre
+@Entity
+@Table(name = "contacto")
+public class Contacto extends Persistable {
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "telefono")
     private String telefono;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    // TODO: jana esto es necesario persistir?
+    @Transient
     private List<Notificacion> notificaciones;
     //private Timer t;
     //private long tiempoNotificacion;

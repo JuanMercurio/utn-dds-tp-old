@@ -1,27 +1,27 @@
 package utn.ddsG8.impacto_ambiental.model.estructura;
 
-public class SolicitudMiembro {
+import lombok.Getter;
+import lombok.Setter;
+import utn.ddsG8.impacto_ambiental.db.Persistable;
+
+import javax.persistence.*;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "solucitud_miembro_organizacion")
+public class SolicitudMiembro extends Persistable {
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "solicitante", referencedColumnName = "id")
     private Miembro solicitante;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "sector", referencedColumnName = "id")
     private Sector sector;
 
     public SolicitudMiembro(Miembro solicitante, Sector sector) {
         this.solicitante = solicitante;
-        this.sector = sector;
-    }
-
-    public Miembro getSolicitante() {
-        return solicitante;
-    }
-
-    public void setSolicitante(Miembro solicitante) {
-        this.solicitante = solicitante;
-    }
-
-    public Sector getSector() {
-        return sector;
-    }
-
-    public void setSector(Sector sector) {
         this.sector = sector;
     }
 }

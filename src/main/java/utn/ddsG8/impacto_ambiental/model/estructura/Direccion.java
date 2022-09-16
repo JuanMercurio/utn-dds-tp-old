@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table
 public class Direccion extends Persistable {
-    @Transient
+    @Column
     private String nombre;               // esta de mas?
     @Column
     private String calle;

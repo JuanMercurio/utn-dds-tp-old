@@ -1,15 +1,38 @@
 package utn.ddsG8.impacto_ambiental.model.calculos;
 
-public class Medicion {
-    private String actividad;
-    private String tipoConsumo;
-    private String valor;
-    private String periocidad;
-    private String periodoDeImputacion;
-    private int anio;
-    private int mes;
-    private double valorD;
+import utn.ddsG8.impacto_ambiental.db.Persistable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "medicion")
+public class Medicion extends Persistable {
+
+    @Column(name = "actividad")
+    private String actividad;
+
+    @Column(name = "tipo_consumo")
+    private String tipoConsumo;
+
+    @Column(name = "valor")
+    private String valor;
+
+    @Column(name = "periocidad")
+    private String periocidad;
+
+    @Column(name = "periodo_imputacion")
+    private String periodoDeImputacion;
+
+    @Column(name = "anio")
+    private int anio;
+
+    @Column(name = "mes")
+    private int mes;
+
+    @Column(name = "valor_d")
+    private double valorD;
 
     public String getActividad() {
         return actividad;

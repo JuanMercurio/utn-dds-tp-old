@@ -17,13 +17,18 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "organizacion")
 public class Organizacion extends Persistable {
-    @Column
+
+    @Column(name = "razon_social")
     private String razonSocial;
-    @Transient
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "tipo")
     private OrgTipo tipo;
-    @Transient
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "clasificacion")
     private Clasificacion clasificacion;
 
     @Setter
@@ -35,20 +40,26 @@ public class Organizacion extends Persistable {
     @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Sector> sectores;
 
-    @Transient
+    // esta es la forma fea del one-to-many unidireccional
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "organizacion", referencedColumnName = "id")
     private List<SolicitudMiembro> potencialesMiembros;
-    @Transient
+
+    @Column(name = "archivo_datos_actividades")
     private String archivoDatosActividades;
 
     @Getter
     @ManyToMany(mappedBy = "organizaciones")
     private List<Trayecto> trayectos;
 
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "organizacion", referencedColumnName = "id")
     private List<Medicion> mediciones;
 
     @Getter
-    @Transient
+    // esta es la forma fea de one-to-many unidireccional
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "organizacion", referencedColumnName = "id")
     private List<Contacto> contactos;
 
     // TODO: HC / CANT. DE MIEMBRO. agregar metodo.
