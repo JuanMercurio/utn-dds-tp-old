@@ -1,5 +1,6 @@
 package utn.ddsG8.impacto_ambiental.model.movilidad;
 
+import lombok.Getter;
 import utn.ddsG8.impacto_ambiental.db.converters.DistanciaConverter;
 import utn.ddsG8.impacto_ambiental.model.calculos.CalcularHC;
 import utn.ddsG8.impacto_ambiental.model.estructura.Miembro;
@@ -16,6 +17,7 @@ import java.util.stream.Stream;
 @Table(name = "trayecto")
 public class Trayecto extends Persistable {
 
+    @Getter
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "trayecto_miembro",
@@ -50,14 +52,6 @@ public class Trayecto extends Persistable {
     public Distancia getDistancia() {
         if (distancia == null) this.setDistancia();
         return distancia;
-    }
-
-    public List<Miembro> getMiembros() {
-        return miembros;
-    }
-
-    public void setMiembros(List<Miembro> miembros) {
-        this.miembros = miembros;
     }
 
     public Distancia getDistanciaDeTramo(int index) {

@@ -45,6 +45,5 @@ public abstract class Tramo extends Persistable {
             return this.transporte.calcularHC(this.distancia.valor);
         }
         return 0.0;
-
     }
 }

@@ -8,6 +8,7 @@ import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.Colectivo
 import utn.ddsG8.impacto_ambiental.model.movilidad.transportes.publico.Subte;
 import utn.ddsG8.impacto_ambiental.model.services.distancia.*;
 
+import javax.persistence.Query;
 import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,8 @@ public class EntityManagerTest {
         EntityManagerHelper.commit();
     }
 
-    @Test
+//    Comento este test porque no usa mockito y tarda como 1 min en correr
+//    @Test
     public void persistirMovilidad() {
         Auto auto = new Auto(null);
         Subte subte = new Subte(null);
@@ -94,7 +96,14 @@ public class EntityManagerTest {
         EntityManagerHelper.beginTransaction();
         EntityManagerHelper.getEntityManager().persist(org);
         EntityManagerHelper.commit();
+    }
 
+    @Test
+    public void encontrarProvincias() {
+        String queryString = "FROM Provincia";
+        Query query = EntityManagerHelper.createQuery(queryString);
+        List<Provincia> provincias = query.getResultList();
+        provincias.forEach(p -> System.out.println(p.nombre));
     }
 
 }

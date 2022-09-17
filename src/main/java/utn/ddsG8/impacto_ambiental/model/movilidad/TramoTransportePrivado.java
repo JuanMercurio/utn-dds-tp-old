@@ -34,6 +34,7 @@ public class TramoTransportePrivado extends Tramo {
     public Double calcularHC() {
         return this.transporte.calcularHC(this.distancia.valor);
     }
+
     public Double calcularHCAnual(int anio) {
         if( this.fecha.getYear() == anio){
             return this.transporte.calcularHC(this.distancia.valor);
@@ -45,8 +46,5 @@ public class TramoTransportePrivado extends Tramo {
             return this.transporte.calcularHC(this.distancia.valor);
         }
         return 0.0;
-
     }
-
-
 }

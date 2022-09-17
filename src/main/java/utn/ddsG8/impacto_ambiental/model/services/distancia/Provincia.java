@@ -29,6 +29,8 @@ public class Provincia {
         agenteSectorialesP = new ArrayList<>();
     }
 
+    public Provincia(){}
+
     public void AgregarAgenteSectorial(AgenteSectorial ags){
         agenteSectorialesP.add(ags);
     }
