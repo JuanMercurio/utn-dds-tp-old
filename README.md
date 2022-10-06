@@ -1,5 +1,5 @@
 <h1 align="center" > Mi Impacto Ambiental </h1>
-<p align="center"><img src="(https://user-images.githubusercontent.com/48862380/194356324-5c090968-d1f1-4f0b-8463-3c26f1a30079.png"> </p>
+<p align="center"><img src="https://user-images.githubusercontent.com/48862380/194356324-5c090968-d1f1-4f0b-8463-3c26f1a30079.png"> </p>
 
 <p align="center"> Trabajo Practico - Diseño de Sistemas - UTN FRBA 2022 <p>
 
