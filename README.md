@@ -3,20 +3,20 @@
 
 <p align="center"> Trabajo Practico - Diseño de Sistemas - UTN FRBA 2022 <p>
 
-[Enunciado](https://drive.google.com/file/d/1kabpFOAiHu6EjXc2LZPrmE_8eA2ayqVl/view "Enunciado")
+# [Enunciado del trabajo practico](https://drive.google.com/file/d/1kabpFOAiHu6EjXc2LZPrmE_8eA2ayqVl/view "Enunciado")
 
-# Progreso 
 
-## Conocimientos Tecnicos
 
-- [x] Primer entrega
+## Conocimientos por entrega
+
+- [x] OOP 1
 	- [x] Diseño inicial del trabajo
 	- [x] Java basics
-- [x] Segunda Entrega
+- [x] OOP 2
 	 - [x] Incrementan funcionalidades
 	 - [x] API Rest (Retrofit)
 	 - [x] Apache Poi (cvs, xlsx)
-- [x] Tercer Entrega
+- [x] OOP 3
 	- [x] Incrementar funcionalidades
 	- [x] Cron tasks/jobs
 - [x] Persistencia de Datos
