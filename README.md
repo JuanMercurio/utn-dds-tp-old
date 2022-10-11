@@ -27,6 +27,7 @@
 	- [ ] Implementacion (HTML, CSS, JS)
 - [ ] Arquitectura Web
 	- [ ] Implementar MVC
+	- [ ] HandleBars
 	- [ ] Apache Spark
 - [ ] Despliegue
 	- [ ] Desplegar con AWS
